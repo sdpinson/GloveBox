@@ -2,6 +2,7 @@ package com.cpsc4150.glovebox;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
@@ -38,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+                            selectedFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit();
                 }
 
                 @Override
