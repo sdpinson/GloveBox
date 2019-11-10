@@ -3,9 +3,16 @@ package com.cpsc4150.glovebox;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
+import com.cpsc4150.glovebox.Adapters.HistoryFragmentAdapter;
+import com.cpsc4150.glovebox.Fragments.HistoryFragment;
+import com.cpsc4150.glovebox.Fragments.NewItemFragment;
+import com.cpsc4150.glovebox.Fragments.UpcomingFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
                     switch(tab.getPosition()){
                         case 0:
                             selectedFragment = new HistoryFragment();
+                            RecyclerView hisotryRV = (RecyclerView)findViewById(R.id.historyRV);
+                            hisotryRV.setLayoutManager(new LinearLayoutManager());
                             break;
                         case 1:
                             selectedFragment = new NewItemFragment();
