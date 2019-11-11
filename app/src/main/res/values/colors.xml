@@ -7,4 +7,7 @@
     <color name="appBarBackround">#90C</color>
     <color name="appBarText">#FFF</color>
     <color name="appBarNameColor">#000</color>
+    <color name="serviceButtonColor">#668F8F8F</color>
+    <color name="fragmentBackGroundColor">#BFFFFFFF</color>
+    <color name="appBackground">#4D3876</color>
 </resources>
