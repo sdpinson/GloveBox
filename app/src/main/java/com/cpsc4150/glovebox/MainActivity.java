@@ -3,6 +3,7 @@ package com.cpsc4150.glovebox;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,13 +16,16 @@ import com.cpsc4150.glovebox.Fragments.NewItemFragment;
 import com.cpsc4150.glovebox.Fragments.UpcomingFragment;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
 
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setOnTabSelectedListener(tabListener);
@@ -37,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
                     switch(tab.getPosition()){
                         case 0:
                             selectedFragment = new HistoryFragment();
-                            RecyclerView hisotryRV = (RecyclerView)findViewById(R.id.historyRV);
-                            hisotryRV.setLayoutManager(new LinearLayoutManager());
                             break;
                         case 1:
                             selectedFragment = new NewItemFragment();

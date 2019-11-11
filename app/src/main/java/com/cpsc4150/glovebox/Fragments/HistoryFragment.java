@@ -8,15 +8,35 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.cpsc4150.glovebox.Adapters.HistoryFragmentAdapter;
 import com.cpsc4150.glovebox.R;
+import com.cpsc4150.glovebox.Services;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HistoryFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_history,container,false);
+        View fragmentView = inflater.inflate(R.layout.fragment_history,container,false);
+        //This will be removed for final production is currently used for adding data to the services list for testing
+        List<Services> services = new ArrayList<>();
+        services.add(new Services());
+        services.add(new Services());
 
+        RecyclerView historyRV = fragmentView.findViewById(R.id.historyRV);
+        //find context
+        RecyclerView.LayoutManager historyLM = new LinearLayoutManager(getActivity());
+        historyRV.setLayoutManager(historyLM);
+        historyRV.setItemAnimator(new DefaultItemAnimator());
+        RecyclerView.Adapter historyAdapter = new HistoryFragmentAdapter(services);
+        historyRV.setAdapter(historyAdapter);
 
+        return fragmentView;
     }
 }
