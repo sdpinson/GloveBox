@@ -11,34 +11,34 @@
 <!--        android:layout_height="match_parent" />-->
 
     <Button
-        android:id="@+id/tireRotationButton4"
+        android:id="@+id/CoolantServiceButton"
         android:layout_width="163dp"
         android:layout_height="120dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="260dp"
         android:backgroundTint="@color/serviceButtonColor"
         android:textColor="@color/appBarText"
-        android:text="@string/TireRotationButton" />
+        android:text="@string/CoolantServiceButton" />
 
     <Button
-        android:id="@+id/tireRotationButton3"
+        android:id="@+id/otherServiceButton"
         android:layout_width="163dp"
         android:layout_height="120dp"
         android:layout_marginLeft="218dp"
         android:layout_marginTop="260dp"
         android:backgroundTint="@color/serviceButtonColor"
         android:textColor="@color/appBarText"
-        android:text="@string/TireRotationButton" />
+        android:text="@string/OtherServiceButton" />
 
     <Button
-        android:id="@+id/tireRotationButton2"
+        android:id="@+id/transServiceButton"
         android:layout_width="163dp"
         android:layout_height="120dp"
         android:layout_marginLeft="218dp"
         android:layout_marginTop="140dp"
         android:backgroundTint="@color/serviceButtonColor"
         android:textColor="@color/appBarText"
-        android:text="@string/TireRotationButton" />
+        android:text="@string/ServiceTrans" />
 
     <Button
         android:id="@+id/oilChangeButton"
