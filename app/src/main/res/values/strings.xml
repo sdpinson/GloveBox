@@ -3,4 +3,10 @@
     <string name="Tab1">History</string>
     <string name="Tab2">New Item</string>
     <string name="Tab3">Upcoming</string>
+    <string name="ChangeOilButton">Oil Change\nChange Oil and Filter</string>
+    <string name="IgnitionButton">Ignition\nPlugs, Wires, Coils</string>
+    <string name="TireRotationButton">Rotate Tires\nRoutine Mant.</string>
+    <string name="OtherServiceButton">Other\nNot Listed</string>
+    <string name="CoolantServiceButton">Coolant\nExchange AntiFreeze</string>
+    <string name="ServiceTrans">Service Trans\nFluid and Filter</string>
 </resources>
