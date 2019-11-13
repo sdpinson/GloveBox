@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +37,7 @@ public class HistoryFragment extends Fragment{
         historyRV.setItemAnimator(new DefaultItemAnimator());
         RecyclerView.Adapter historyAdapter = new HistoryFragmentAdapter(services);
         historyRV.setAdapter(historyAdapter);
+        historyRV.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
         return fragmentView;
     }
