@@ -9,4 +9,8 @@
     <string name="OtherServiceButton">Other\nNot Listed</string>
     <string name="CoolantServiceButton">Coolant\nExchange AntiFreeze</string>
     <string name="ServiceTrans">Service Trans\nFluid and Filter</string>
+
+    <string name="serviceTitleOther">New Other Service</string>
+
+    <string name="pictureButton">Select\nPicture</string>
 </resources>
