@@ -3,21 +3,13 @@ package com.cpsc4150.glovebox;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.LinearLayout;
 
-import com.cpsc4150.glovebox.Adapters.HistoryFragmentAdapter;
 import com.cpsc4150.glovebox.Fragments.HistoryFragment;
 import com.cpsc4150.glovebox.Fragments.NewItemFragment;
-import com.cpsc4150.glovebox.Fragments.UpcomingFragment;
+import com.cpsc4150.glovebox.Fragments.InProgressFragment;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new NewItemFragment();
                             break;
                         case 2:
-                            selectedFragment = new UpcomingFragment();
+                            selectedFragment = new InProgressFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

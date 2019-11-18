@@ -9,7 +9,7 @@ public class NewItemAdapter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 //        Fragment newItem = new NewItemFragment();
-//        setContentView(R.layout.fragment_newitemfragment);
+//        setContentView(R.layout.fragment_newitem);
 //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
 //                newItem).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 //                .commit();
