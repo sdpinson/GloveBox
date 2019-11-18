@@ -3,9 +3,11 @@ package com.cpsc4150.glovebox.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.opengl.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.cpsc4150.glovebox.R;
@@ -43,6 +45,19 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.name.setText(servicesList.get(position).getName());
+        final TextView hiddenText = holder.itemView.findViewById(R.id.hiddenText);
+        final Button detailsButton = holder.itemView.findViewById(R.id.detailsButton);
+        detailsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(hiddenText.getVisibility() == View.GONE){
+                    hiddenText.setVisibility(View.VISIBLE);
+                }
+                else {
+                    hiddenText.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     //Returns the number of services in the list
