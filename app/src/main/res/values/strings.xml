@@ -12,6 +12,6 @@
 
     <string name="serviceTitleOther">New Other Service</string>
 
-    <string name="pictureButton">Select\nPicture</string>
+    <string name="pictureButton">Take\nPicture</string>
     <string name="millageLabel">Vehicle Millage</string>
 </resources>
