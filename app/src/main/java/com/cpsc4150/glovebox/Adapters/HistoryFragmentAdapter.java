@@ -52,9 +52,11 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
             public void onClick(View view) {
                 if(hiddenText.getVisibility() == View.GONE){
                     hiddenText.setVisibility(View.VISIBLE);
+                    detailsButton.setText("Less Details");
                 }
                 else {
                     hiddenText.setVisibility(View.GONE);
+                    detailsButton.setText("More Details");
                 }
             }
         });

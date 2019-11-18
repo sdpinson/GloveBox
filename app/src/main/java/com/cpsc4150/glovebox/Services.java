@@ -6,7 +6,7 @@ public class Services {
     private String description;
     private int mileage;
     public Services(){
-        name = "Null";
+        name = "Service";
         date = "11/10/19";
         description = "My car";
         mileage = 000;
