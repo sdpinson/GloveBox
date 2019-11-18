@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +21,10 @@ public class ServiceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =  inflater.inflate(R.layout.fragment_service,container,
                 false);
+
         Button pictureButtonOne = (Button) v.findViewById(R.id.button4);
+        Bundle newName = this.getArguments();
+
         pictureButtonOne.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -29,6 +33,9 @@ public class ServiceFragment extends Fragment {
             }
 
         });
+
+        TextView name = v.findViewById(R.id.titleText);
+        name.setText(newName.getString("Name"));
         return(v);
     }
 }

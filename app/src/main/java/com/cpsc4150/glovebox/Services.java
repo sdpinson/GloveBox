@@ -9,7 +9,7 @@ public class Services {
         name = "Service";
         date = "11/10/19";
         description = "My car";
-        mileage = 000;
+        mileage = 000000;
     }
 
     public void setName(String newName){
@@ -18,5 +18,29 @@ public class Services {
 
     public String getName(){
         return name;
+    }
+
+    public void setDate(String date){
+        this.date = date;
+    }
+
+    public String getDate(){
+        return date;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public String getDescription(){
+        return description;
+    }
+
+    public void setMileage(int mileage){
+        this.mileage = mileage;
+    }
+
+    public int getMileage(){
+        return mileage;
     }
 }

@@ -1,14 +1,12 @@
 package com.cpsc4150.glovebox.Adapters;
 
-
-import android.app.Activity;
-import android.content.Context;
-import android.opengl.Visibility;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
@@ -16,11 +14,10 @@ import java.util.List;
 
 public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragmentAdapter.MyViewHolder> {
     //The list of all services added
-    List<Services> servicesList;
+    private List<Services> servicesList;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        public View textView;
-        public TextView name;
+        private TextView name;
 
         public MyViewHolder(View v) {
             super(v);
@@ -34,6 +31,7 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     }
 
     //Calls the card view to display for each item in the list
+    @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -45,6 +43,8 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.name.setText(servicesList.get(position).getName());
+
+        //Sets the button for each card view and allows the text to be displayed on button press
         final TextView hiddenText = holder.itemView.findViewById(R.id.hiddenText);
         final Button detailsButton = holder.itemView.findViewById(R.id.detailsButton);
         detailsButton.setOnClickListener(new View.OnClickListener() {
@@ -52,11 +52,11 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
             public void onClick(View view) {
                 if(hiddenText.getVisibility() == View.GONE){
                     hiddenText.setVisibility(View.VISIBLE);
-                    detailsButton.setText("Less Details");
+                    detailsButton.setText(R.string.LessDetails);
                 }
                 else {
                     hiddenText.setVisibility(View.GONE);
-                    detailsButton.setText("More Details");
+                    detailsButton.setText(R.string.MoreDetails);
                 }
             }
         });
