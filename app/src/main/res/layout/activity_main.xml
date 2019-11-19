@@ -21,8 +21,8 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/appBackground"
-            app:tabIndicatorColor="@color/appBarText"
+            android:background="@color/tabBarColor"
+            app:tabIndicatorColor="@color/indicatorTabColor"
             app:layout_scrollFlags="scroll|enterAlways"
             app:tabPaddingStart="25dp"
             app:tabTextColor="@color/appBarText">

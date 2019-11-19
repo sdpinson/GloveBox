@@ -5,16 +5,13 @@
     android:background="@color/fragmentBackGroundColor"
     >
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
-
     <Button
         android:id="@+id/CoolantServiceButton"
         android:layout_width="163dp"
         android:layout_height="120dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="260dp"
+        android:gravity="bottom"
         android:backgroundTint="@color/serviceButtonColor"
         android:textColor="@color/appBarText"
         android:text="@string/CoolantServiceButton" />

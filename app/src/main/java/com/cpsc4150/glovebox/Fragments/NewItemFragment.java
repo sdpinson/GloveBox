@@ -59,7 +59,7 @@ public class NewItemFragment extends Fragment {
        otherServiceButton.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-               Log.i("onClick oilServiceButton", "should open ServiceFragment");
+               Log.i("onClick otherServiceButton", "should open ServiceFragment");
                Fragment service = new ServiceFragment();
                Bundle name = new Bundle();
                name.putString("Name",otherServiceButton.getText().toString());
@@ -71,7 +71,7 @@ public class NewItemFragment extends Fragment {
        transServiceButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Log.i("onClick oilServiceButton", "should open ServiceFragment");
+               Log.i("onClick transServiceButton", "should open ServiceFragment");
                Fragment service = new ServiceFragment();
                Bundle name = new Bundle();
                name.putString("Name",transServiceButton.getText().toString());
@@ -83,7 +83,7 @@ public class NewItemFragment extends Fragment {
        tireRotationButton.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-               Log.i("onClick oilServiceButton", "should open ServiceFragment");
+               Log.i("onClick tireServiceButton", "should open ServiceFragment");
                Fragment service = new ServiceFragment();
                Bundle name = new Bundle();
                name.putString("Name",tireRotationButton.getText().toString());
@@ -95,7 +95,7 @@ public class NewItemFragment extends Fragment {
        ignitionServiceButton.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-               Log.i("onClick oilServiceButton", "should open ServiceFragment");
+               Log.i("onClick ignitionServiceButton", "should open ServiceFragment");
                Fragment service = new ServiceFragment();
                Bundle name = new Bundle();
                name.putString("Name",ignitionServiceButton.getText().toString());
