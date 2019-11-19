@@ -20,7 +20,7 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/tabBarColor"
             app:tabIndicatorColor="@color/indicatorTabColor"
             app:layout_scrollFlags="scroll|enterAlways"
@@ -35,7 +35,7 @@
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/Tab2" />
 
             <com.google.android.material.tabs.TabItem
@@ -48,7 +48,7 @@
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

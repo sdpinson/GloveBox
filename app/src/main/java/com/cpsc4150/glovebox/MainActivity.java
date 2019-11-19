@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.cpsc4150.glovebox.Fragments.HistoryFragment;
 import com.cpsc4150.glovebox.Fragments.NewItemFragment;
@@ -32,15 +33,19 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch(tab.getPosition()){
                         case 0:
+                            Log.i("Selected Fragment", "History");
                             selectedFragment = new HistoryFragment();
                             break;
                         case 1:
+                            Log.i("Selected Fragment", "History");
                             selectedFragment = new NewItemFragment();
                             break;
                         case 2:
+                            Log.i("Selected Fragment", "History");
                             selectedFragment = new InProgressFragment();
                             break;
                     }
+                    Log.i("Committing Fragment: ", "Selected Fragment");
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                             .commit();

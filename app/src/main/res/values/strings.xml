@@ -3,8 +3,8 @@
     <string name="Tab1">History</string>
     <string name="Tab2">New Item</string>
     <string name="Tab3">In Progress</string>
-    <string name="MoreDetails">More Details</string>
-    <string name="LessDetails">Less Details</string>
+    <string name="MoreDetails">Show All</string>
+    <string name="LessDetails">Show Less</string>
     <string name="Date">Date</string>
     <string name="Miles">Miles</string>
     <string name="ServiceProvided">Service Provided</string>
