@@ -29,19 +29,22 @@ public class ServiceFragment extends Fragment {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int RESULT_OK = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
+    String currentPhotoPath;
+
+//    https://developer.android.com/training/camera/photobasics.html#java
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.fragment_service,container,
+        View v = inflater.inflate(R.layout.fragment_service, container,
                 false);
 
         Button pictureButtonOne = (Button) v.findViewById(R.id.button4);
         Bundle newName = this.getArguments();
 
-        pictureButtonOne.setOnClickListener(new View.OnClickListener(){
+        pictureButtonOne.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 dispatchTakePictureIntent();
             }
 
@@ -49,10 +52,8 @@ public class ServiceFragment extends Fragment {
 
         TextView name = v.findViewById(R.id.titleText);
         name.setText(newName.getString("Name"));
-        return(v);
+        return (v);
     }
-
-//    https://developer.android.com/training/camera/photobasics.html#java
 
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -68,7 +69,7 @@ public class ServiceFragment extends Fragment {
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 Uri photoURI = FileProvider.getUriForFile(getActivity(),
-                        "com.cpsc4150.glovebox.R",
+                        "com.cpsc4150.glovebox",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
@@ -84,8 +85,6 @@ public class ServiceFragment extends Fragment {
             //imageView.setImageBitmap(imageBitmap);
         }
     }
-
-    String currentPhotoPath;
 
     private File createImageFile() throws IOException {
         // Create an image file name
