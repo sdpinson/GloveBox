@@ -5,10 +5,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +21,9 @@ import androidx.fragment.app.Fragment;
 import android.graphics.Bitmap;
 
 import com.cpsc4150.glovebox.R;
+import com.cpsc4150.glovebox.Services;
+
+import org.w3c.dom.Text;
 
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +34,7 @@ public class ServiceFragment extends Fragment {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int RESULT_OK = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
+    private Services service;
     String currentPhotoPath;
 
 //    https://developer.android.com/training/camera/photobasics.html#java
@@ -39,7 +45,7 @@ public class ServiceFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_service, container,
                 false);
 
-        Button pictureButtonOne = (Button) v.findViewById(R.id.button4);
+        Button pictureButtonOne = (Button) v.findViewById(R.id.repairImageButton);
         Bundle newName = this.getArguments();
 
         pictureButtonOne.setOnClickListener(new View.OnClickListener() {
@@ -50,8 +56,28 @@ public class ServiceFragment extends Fragment {
 
         });
 
+        Button pictureButtonTwo = (Button) v.findViewById(R.id.receiptImageButton);
+        pictureButtonTwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
+            }
+        });
+
+        Button pictureButtonThree = (Button) v.findViewById(R.id.button6);
+        pictureButtonThree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dispatchTakePictureIntent();
+            }
+        });
+
         TextView name = v.findViewById(R.id.titleText);
         name.setText(newName.getString("Name"));
+
+        TextView milleage = v.findViewById(R.id.millage_entered);
+        // how to set this?
+//        service.setMileage(milleage.get);
         return (v);
     }
 
@@ -79,11 +105,13 @@ public class ServiceFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+        //if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            ImageView imageView = (ImageView) getActivity().findViewById(R.id.smallImageView);
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            //imageView.setImageBitmap(imageBitmap);
-        }
+            imageView.setImageBitmap(imageBitmap); // use this to display a thumnail
+            Log.i("image set","image set");
+        //}
     }
 
     private File createImageFile() throws IOException {
@@ -99,6 +127,7 @@ public class ServiceFragment extends Fragment {
 
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
+
         return image;
     }
 

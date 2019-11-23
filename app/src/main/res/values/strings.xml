@@ -17,6 +17,9 @@
 
     <string name="serviceTitleOther">New Other Service</string>
 
-    <string name="pictureButton">Take\nPicture</string>
-    <string name="mileageLabel">Vehicle Millage</string>
+    <string name="repairImageButton">Add Repair\nImage</string>
+    <string name="receiptImageButton">Add Receipt\nImage</string>
+    <string name="mileageLabel">Vehicle Millage:</string>
+    <string name="ServiceDescription">Description:</string>
+    <string name="empty"></string>
 </resources>
