@@ -166,6 +166,7 @@
         android:layout_marginStart="112dp"
         android:layout_marginTop="336dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/ic_launcher_background"/>
 <!--        app:srcCompat="?android:attr/panelBackground" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
