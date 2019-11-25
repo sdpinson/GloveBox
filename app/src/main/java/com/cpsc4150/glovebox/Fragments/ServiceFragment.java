@@ -1,6 +1,8 @@
 package com.cpsc4150.glovebox.Fragments;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -10,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,10 +37,10 @@ import static android.app.Activity.RESULT_OK;
 
 public class ServiceFragment extends Fragment {
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    //static final int RESULT_OK = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private Services service;
     String currentPhotoPath;
+    private int view = 0;
 
 //    https://developer.android.com/training/camera/photobasics.html#java
 
@@ -47,7 +50,9 @@ public class ServiceFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_service, container,
                 false);
 
-        Button pictureButtonOne = (Button) v.findViewById(R.id.repairImageButton);
+        ImageView activeView;
+
+        ImageButton pictureButtonOne = (ImageButton) v.findViewById(R.id.addImageButtonOne);
         Bundle newName = this.getArguments();
 
         pictureButtonOne.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +63,7 @@ public class ServiceFragment extends Fragment {
 
         });
 
-        Button pictureButtonTwo = (Button) v.findViewById(R.id.receiptImageButton);
+        ImageButton pictureButtonTwo = (ImageButton) v.findViewById(R.id.addImageButtonTwo);
         pictureButtonTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,8 +71,8 @@ public class ServiceFragment extends Fragment {
             }
         });
 
-        Button pictureButtonThree = (Button) v.findViewById(R.id.button6);
-        pictureButtonThree.setOnClickListener(new View.OnClickListener() {
+        ImageButton pictureButtonThree = (ImageButton) v.findViewById(R.id.addImageButtonThree);
+        pictureButtonThree.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
@@ -78,65 +83,69 @@ public class ServiceFragment extends Fragment {
         name.setText(newName.getString("Name"));
 
         TextView milleage = v.findViewById(R.id.millage_entered);
-        // how to set this?
-//        service.setMileage(milleage.get);
+        // how to set this? inside onclick for save
+        service.setMileage((Integer.parseInt(milleage.getText().toString())));
         return (v);
     }
 
-//    private void dispatchTakePictureIntent() {
-//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        // Ensure that there's a camera activity to handle the intent
-//        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-//            // Create the File where the photo should go
-//            File photoFile = null;
-//            try {
-//                photoFile = createImageFile();
-//            } catch (IOException ex) {
-//                Log.e("File error","File null");
-//                // Error occurred while creating the File
-//            }
-//            // Continue only if the File was successfully created
-//            if (photoFile != null) {
-//                Uri photoURI = FileProvider.getUriForFile(getActivity(),
-//                        "com.cpsc4150.glovebox",
-//                        photoFile);
-//                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-//                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
-//            }
-//        }
-//    }
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Ensure that there's a camera activity to handle the intent
         if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            // Create the File where the photo should go
+            File photoFile = null;
+            try { photoFile = createImageFile(); }
+            catch (IOException ex) { Log.e("File error","File null"); }
+            // Continue only if the File was successfully created
+            if (photoFile != null) {
+                Uri photoURI = FileProvider.getUriForFile(getActivity(),
+                        "com.cpsc4150.glovebox",photoFile);
+                String uri = ""+photoURI;
+                Log.i("File Path",uri);
+                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
+            }
         }
     }
 
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        String debug = " "+requestCode+resultCode+" ";
-//        Log.i("requestCode, resultCode =",debug);
-//        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == -1) {
-//            ImageView imageView = (ImageView) getActivity().findViewById(R.id.smallImageView);
-//            Bundle extras = data.getExtras();
-//            Bitmap imageBitmap = (Bitmap) extras.get("data");
-//            imageView.setImageBitmap(imageBitmap); // use this to display a thumnail
-//            Log.i("image set","image set");
-//        }
-//    }
-@Override
-public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(!data.hasExtra("data")){
-            Log.e("Error: ","Bitmap does not exist");
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String rcode = ""+requestCode;
+        Log.i("requestCode",rcode);
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            //ImageView imageView = (ImageView) getActivity().findViewById(R.id.smallImageView);
+            ImageView viewOne = (ImageView) getActivity().findViewById(R.id.smallImageView);
+            ImageView viewTwo = (ImageView) getActivity().findViewById(R.id.imageView2);
+            ImageView viewThree = (ImageView) getActivity().findViewById(R.id.imageView3);
+            switch(view){
+                case 0:{
+                    setPic(viewOne);
+                    Log.i("image set","View One");
+                    view++;
+                    //disable button
+                    break;
+                }
+                case 1:{
+                    setPic(viewTwo);
+                    Log.i("image set","View Two");
+                    view++;
+                    //disable button
+                    break;
+                }
+                case 2:{
+                    setPic(viewThree);
+                    Log.i("image set","View Three");
+                    view++;
+                    //disable button
+                    break;
+                }
+                default:{
+                    Log.e("Image Set Error","Image not able to be set");
+                    break;
+                }
+            }
         }
-    if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-        ImageView imageView = (ImageView) getActivity().findViewById(R.id.smallImageView);
-        Bundle extras = data.getExtras();
-        Bitmap imageBitmap = (Bitmap) extras.get("data");
-        Log.i("imageView","BitMapSet");
-        imageView.setImageBitmap(imageBitmap);
     }
-}
 
     private File createImageFile() throws IOException {
         // Create an image file name
@@ -148,11 +157,33 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
                 ".jpg",         /* suffix */
                 storageDir      /* directory */
         );
-
         // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.getAbsolutePath();
-
         return image;
+    }
+
+    private void setPic(ImageView imageView) {
+        // Get the dimensions of the View
+        int targetW = imageView.getWidth();
+        int targetH = imageView.getHeight();
+
+        // Get the dimensions of the bitmap
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        bmOptions.inJustDecodeBounds = true;
+
+        int photoW = bmOptions.outWidth;
+        int photoH = bmOptions.outHeight;
+
+        // Determine how much to scale down the image
+        int scaleFactor = Math.min(photoW/targetW, photoH/targetH);
+
+        // Decode the image file into a Bitmap sized to fill the View
+        bmOptions.inJustDecodeBounds = false;
+        bmOptions.inSampleSize = scaleFactor;
+        bmOptions.inPurgeable = true;
+
+        Bitmap bitmap = BitmapFactory.decodeFile(currentPhotoPath, bmOptions);
+        imageView.setImageBitmap(bitmap);
     }
 
 }

@@ -17,39 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/repairImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="118dp"
-        android:backgroundTint="@color/serviceButtonColor"
-        android:text="@string/repairImageButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <Button
-        android:id="@+id/receiptImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="516dp"
-        android:backgroundTint="@color/serviceButtonColor"
-        android:text="@string/receiptImageButton"
-        app:layout_constraintStart_toEndOf="@+id/repairImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/titleText" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="616dp"
-        android:backgroundTint="@color/serviceButtonColor"
-        android:text="null"
-        app:layout_constraintStart_toEndOf="@+id/receiptImageButton"
-        app:layout_constraintTop_toBottomOf="@+id/titleText" />
-
     <TextView
         android:id="@+id/millage"
         android:layout_width="wrap_content"
@@ -189,7 +156,7 @@
         android:id="@+id/editText4"
         android:layout_width="133dp"
         android:layout_height="47dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/empty"
@@ -200,7 +167,7 @@
         android:id="@+id/editText5"
         android:layout_width="133dp"
         android:layout_height="47dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/empty"
@@ -211,7 +178,7 @@
         android:id="@+id/editText6"
         android:layout_width="133dp"
         android:layout_height="47dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginEnd="50dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/empty"
@@ -237,5 +204,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/ic_launcher_background" />
-    <!--        app:srcCompat="?android:attr/panelBackground" />-->
+
+    <ImageButton
+        android:id="@+id/addImageButtonOne"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:srcCompat="@drawable/union" />
+
+    <ImageButton
+        android:id="@+id/addImageButtonTwo"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImageButtonThree"
+        app:srcCompat="@drawable/union" />
+
+    <ImageButton
+        android:id="@+id/addImageButtonThree"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImageButtonOne"
+        app:srcCompat="@drawable/union" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
