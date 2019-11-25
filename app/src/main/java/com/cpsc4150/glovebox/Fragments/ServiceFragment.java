@@ -133,7 +133,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent data) {
         ImageView imageView = (ImageView) getActivity().findViewById(R.id.smallImageView);
         Bundle extras = data.getExtras();
         Bitmap imageBitmap = (Bitmap) extras.get("data");
-        Log.e("imageset","imageset");
+        Log.i("imageView","BitMapSet");
         imageView.setImageBitmap(imageBitmap);
     }
 }
