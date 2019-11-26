@@ -1,25 +1,38 @@
 package com.cpsc4150.glovebox;
 
+import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Services {
+    private String ID = "";
     final private int STATUS_COMPLETE = 1;
-    final private int STATUS_IN_PROGESS = 0;
+    final private int STATUS_IN_PROGRESS = 0;
     private int state;
     private String name;
     private String date;
     private String description;
     private List<String> repairImages = new ArrayList<>();
     private List<String> receiptImages = new ArrayList<>();
+    private List<String>  partNumbers = new ArrayList<>();
     private int mileage;
     public Services(){
-        state = STATUS_IN_PROGESS;
+        ID = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        state = STATUS_IN_PROGRESS;
         name = "Service";
         date = "11/10/19";
         description = "My car";
         mileage = 000000;
     }
+
+    public void addPartNumber(String partNumber){partNumbers.add(partNumber);}
+
+    public String getPartNumber(int partNumber){return partNumbers.get(partNumber);}
+
+    public String getId(){ return ID; }
 
     public String getName(){
         return name;
@@ -64,5 +77,11 @@ public class Services {
     public String getReceiptImage(int imageNumber) {return(receiptImages.get(imageNumber));}
 
     public void addReceiptImage(String imageLink) {receiptImages.add(imageLink);}
+
+    public String toJson() {
+        Gson gson = new Gson();
+        String json = gson.toJson(this);
+        return(json);
+    }
 
 }

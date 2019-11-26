@@ -1,8 +1,8 @@
 package com.cpsc4150.glovebox.Fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,21 +27,21 @@ import android.graphics.Bitmap;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
 
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
+import static android.content.Context.MODE_PRIVATE;
 
 public class ServiceFragment extends Fragment {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
-    private Services service;
+    private Services service = new Services();
     String currentPhotoPath;
     private int view = 0;
+    static final String serviceRecords = "serviceRecords";
 
 //    https://developer.android.com/training/camera/photobasics.html#java
 
@@ -78,13 +79,42 @@ public class ServiceFragment extends Fragment {
                 dispatchTakePictureIntent();
             }
         });
+        final EditText mileage = (EditText) v.findViewById(R.id.mileage_entered);
+        final EditText partNumberOne = (EditText) v.findViewById(R.id.partNumberOne);
+        final EditText partNumberTwo = (EditText) v.findViewById(R.id.partNumberTwo);
+        final EditText partNumberThree = (EditText) v.findViewById(R.id.partNumberThree);
+        final SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
+        final SharedPreferences.Editor editor = mPrefs.edit();
+        Button saveButton = (Button) v.findViewById(R.id.saveButton);
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+
+                //save data into service object
+                service.setMileage((Integer.parseInt(mileage.getText().toString())));
+                service.addPartNumber(partNumberOne.getText().toString());
+                service.addPartNumber(partNumberTwo.getText().toString());
+                service.addPartNumber(partNumberThree.getText().toString());
+
+
+                //save service object into storage
+                String json = service.toJson();
+                String id = ""+ service.getId();
+                // should save this id here into a file with a static address to allow retrieval later
+                String serviceJson = "";
+                // if serviceRecords exist
+                if(true){
+                    mPrefs.getString(serviceJson,"");
+                }
+                editor.putString(id, json);
+                editor.putString(serviceRecords,serviceJson);
+                editor.commit();
+            }
+        });
 
         TextView name = v.findViewById(R.id.titleText);
         name.setText(newName.getString("Name"));
-
-        TextView milleage = v.findViewById(R.id.millage_entered);
-        // how to set this? inside onclick for save
-        service.setMileage((Integer.parseInt(milleage.getText().toString())));
         return (v);
     }
 
@@ -110,10 +140,7 @@ public class ServiceFragment extends Fragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        String rcode = ""+requestCode;
-        Log.i("requestCode",rcode);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            //ImageView imageView = (ImageView) getActivity().findViewById(R.id.smallImageView);
             ImageView viewOne = (ImageView) getActivity().findViewById(R.id.smallImageView);
             ImageView viewTwo = (ImageView) getActivity().findViewById(R.id.imageView2);
             ImageView viewThree = (ImageView) getActivity().findViewById(R.id.imageView3);
@@ -122,6 +149,7 @@ public class ServiceFragment extends Fragment {
                     setPic(viewOne);
                     Log.i("image set","View One");
                     view++;
+                    service.addRepairImage(currentPhotoPath);
                     //disable button
                     break;
                 }
@@ -129,6 +157,7 @@ public class ServiceFragment extends Fragment {
                     setPic(viewTwo);
                     Log.i("image set","View Two");
                     view++;
+                    service.addRepairImage(currentPhotoPath);
                     //disable button
                     break;
                 }
@@ -136,6 +165,7 @@ public class ServiceFragment extends Fragment {
                     setPic(viewThree);
                     Log.i("image set","View Three");
                     view++;
+                    service.addRepairImage(currentPhotoPath);
                     //disable button
                     break;
                 }

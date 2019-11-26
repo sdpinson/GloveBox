@@ -28,7 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/serviceDescription" />
 
     <EditText
-        android:id="@+id/millage_entered"
+        android:id="@+id/mileage_entered"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/millage" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/partNumberOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -56,7 +56,7 @@
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/millage_entered" />
+        app:layout_constraintTop_toBottomOf="@+id/mileage_entered" />
 
     <TextView
         android:id="@+id/serviceDescription"
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/partNumberTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -109,10 +109,10 @@
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/partNumberOne" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/partNumberThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
@@ -120,7 +120,7 @@
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/partNumberTwo" />
 
     <ImageView
         android:id="@+id/smallImageView"
@@ -130,7 +130,7 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/partNumberThree" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -161,7 +161,7 @@
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/partNumberThree" />
 
     <EditText
         android:id="@+id/editText5"
@@ -212,7 +212,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/partNumberThree"
         app:srcCompat="@drawable/union" />
 
     <ImageButton
@@ -234,5 +234,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addImageButtonOne"
         app:srcCompat="@drawable/union" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/saveButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

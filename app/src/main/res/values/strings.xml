@@ -25,4 +25,5 @@
     <string name="repairPictures">Repair Pictures:</string>
     <string name="notes">Additional Notes:</string>
     <string name="empty"></string>
+    <string name="saveButton">save</string>
 </resources>
