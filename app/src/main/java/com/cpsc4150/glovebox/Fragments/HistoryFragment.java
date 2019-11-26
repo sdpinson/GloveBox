@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cpsc4150.glovebox.Adapters.HistoryFragmentAdapter;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,10 @@ public class HistoryFragment extends Fragment{
         View fragmentView = inflater.inflate(R.layout.fragment_history,container,false);
         //This will be removed for final production is currently used for adding data to the services list for testing
         List<Services> services = new ArrayList<>();
+        Gson gson = new Gson();
+        //String json = mPrefs.getString("","");
+
+
         services.add(new Services());
         services.add(new Services());
 

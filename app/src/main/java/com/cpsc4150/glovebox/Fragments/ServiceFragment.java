@@ -24,13 +24,18 @@ import androidx.fragment.app.Fragment;
 
 import android.graphics.Bitmap;
 
+import com.cpsc4150.glovebox.MainActivity;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
@@ -89,27 +94,26 @@ public class ServiceFragment extends Fragment {
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                //List<String> serviceList = new ArrayList<>();  // for storing location of gson of repairs
 
                 //save data into service object
-                service.setMileage((Integer.parseInt(mileage.getText().toString())));
+                if(mileage.getText().toString() != ""){
+
+                }
+
+                try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
+                catch(Exception e){
+                    Log.e("","mileage not entered");
+                }
+//                service.setMileage((Integer.parseInt(mileage.getText().toString())));
                 service.addPartNumber(partNumberOne.getText().toString());
                 service.addPartNumber(partNumberTwo.getText().toString());
                 service.addPartNumber(partNumberThree.getText().toString());
 
-
-                //save service object into storage
-                String json = service.toJson();
-                String id = ""+ service.getId();
-                // should save this id here into a file with a static address to allow retrieval later
-                String serviceJson = "";
-                // if serviceRecords exist
-                if(true){
-                    mPrefs.getString(serviceJson,"");
-                }
-                editor.putString(id, json);
-                editor.putString(serviceRecords,serviceJson);
-                editor.commit();
+                // save service into shared prefs
+                MainActivity main = (MainActivity) getActivity();
+                main.serviceList.add(service);
+                main.saveServices();
             }
         });
 
