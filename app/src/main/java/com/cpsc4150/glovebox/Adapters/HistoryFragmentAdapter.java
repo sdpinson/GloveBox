@@ -14,6 +14,7 @@ import java.util.List;
 
 public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragmentAdapter.MyViewHolder> {
     //The list of all services added
+
     private List<Services> servicesList;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -36,6 +37,8 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.history_card, parent, false);
+        TextView miles = (TextView) view.findViewById(R.id.miles);
+        miles.setText((servicesList.get(0).getId()));
         return new MyViewHolder(view);
     }
 

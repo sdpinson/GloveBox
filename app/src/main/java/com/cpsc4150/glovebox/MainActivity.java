@@ -21,7 +21,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public final String SERVICE_LIST_ID = "SERVICE_LIST";
-    public List<Services> serviceList;// = new ArrayList<>();
+    public List<Services> serviceList;
     public void saveServices() {
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
