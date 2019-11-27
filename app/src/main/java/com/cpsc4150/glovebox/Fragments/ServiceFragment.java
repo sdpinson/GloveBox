@@ -21,6 +21,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.graphics.Bitmap;
 
@@ -83,20 +85,20 @@ public class ServiceFragment extends Fragment {
                 pictureButtonThree.setVisibility(View.GONE);
             }
         });
+        Button saveButton = (Button) v.findViewById(R.id.saveButton);
         final EditText mileage = (EditText) v.findViewById(R.id.mileage_entered);
         final EditText partNumberOne = (EditText) v.findViewById(R.id.partNumberOne);
         final EditText partNumberTwo = (EditText) v.findViewById(R.id.partNumberTwo);
         final EditText partNumberThree = (EditText) v.findViewById(R.id.partNumberThree);
-        Button saveButton = (Button) v.findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
 
                 try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
                 catch(Exception e){
                     Log.e("","mileage not entered");
                 }
-
                 service.addPartNumber(partNumberOne.getText().toString());
                 service.addPartNumber(partNumberTwo.getText().toString());
                 service.addPartNumber(partNumberThree.getText().toString());
@@ -106,8 +108,36 @@ public class ServiceFragment extends Fragment {
                 MainActivity main = (MainActivity) getActivity();
                 main.serviceList.add(service);
                 main.saveServices();
+
+                Fragment fragment = new InProgressFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container,
+                        fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit();
             }
         });
+        Button completeButton = (Button) v.findViewById(R.id.completeButton);
+        completeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                service.setStateComplete();
+
+                try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
+                catch(Exception e){
+                    Log.e("","mileage not entered");
+                }
+                if(partNumberOne != null) service.addPartNumber(partNumberOne.getText().toString());
+                if(partNumberTwo != null) service.addPartNumber(partNumberTwo.getText().toString());
+                service.addPartNumber(partNumberThree.getText().toString());
+                service.setDate(new SimpleDateFormat("dd mm yy").format(new Date()));
+
+                // save service into shared prefs
+                MainActivity main = (MainActivity) getActivity();
+                main.serviceList.add(service);
+                main.saveServices();
+            }
+        });
+
 
         TextView name = v.findViewById(R.id.titleText);
         name.setText(newName.getString("Name"));

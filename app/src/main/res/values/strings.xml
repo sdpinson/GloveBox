@@ -26,4 +26,5 @@
     <string name="notes">Additional Notes:</string>
     <string name="empty"></string>
     <string name="saveButton">save</string>
+    <string name="completeButton">Complete</string>
 </resources>
