@@ -19,10 +19,12 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
+        private TextView miles;
 
         public MyViewHolder(View v) {
             super(v);
             name = v.findViewById(R.id.historyID);
+            miles = (TextView) v.findViewById(R.id.miles);
         }
     }
 
@@ -37,8 +39,6 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.history_card, parent, false);
-        TextView miles = (TextView) view.findViewById(R.id.miles);
-        miles.setText((servicesList.get(0).getId()));
         return new MyViewHolder(view);
     }
 
@@ -46,7 +46,7 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.name.setText(servicesList.get(position).getName());
-
+        holder.miles.setText(Integer.toString(servicesList.get(position).getMileage()));
         //Sets the button for each card view and allows the text to be displayed on button press
         final TextView hiddenText = holder.itemView.findViewById(R.id.hiddenText);
         final Button detailsButton = holder.itemView.findViewById(R.id.detailsButton);
