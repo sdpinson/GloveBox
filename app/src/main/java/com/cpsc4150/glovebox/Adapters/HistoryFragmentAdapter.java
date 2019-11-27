@@ -20,11 +20,15 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
         private TextView miles;
+        private TextView date;
+        private TextView description;
 
         public MyViewHolder(View v) {
             super(v);
             name = v.findViewById(R.id.historyID);
             miles = (TextView) v.findViewById(R.id.miles);
+            date = (TextView) v.findViewById(R.id.date);
+            description = (TextView) v.findViewById(R.id.serviceDescription);
         }
     }
 
@@ -47,6 +51,7 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.name.setText(servicesList.get(position).getName());
         holder.miles.setText(Integer.toString(servicesList.get(position).getMileage()));
+        holder.date.setText(servicesList.get(position).getDate());
         //Sets the button for each card view and allows the text to be displayed on button press
         final TextView hiddenText = holder.itemView.findViewById(R.id.hiddenText);
         final Button detailsButton = holder.itemView.findViewById(R.id.detailsButton);

@@ -219,20 +219,20 @@
         android:id="@+id/addImageButtonTwo"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="356dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addImageButtonThree"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
         app:srcCompat="@drawable/union" />
 
     <ImageButton
         android:id="@+id/addImageButtonThree"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="290dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addImageButtonOne"
+        app:layout_constraintTop_toBottomOf="@+id/titleText"
         app:srcCompat="@drawable/union" />
 
     <Button

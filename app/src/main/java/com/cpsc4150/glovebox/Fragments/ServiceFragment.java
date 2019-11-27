@@ -27,26 +27,21 @@ import android.graphics.Bitmap;
 import com.cpsc4150.glovebox.MainActivity;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
 public class ServiceFragment extends Fragment {
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private Services service = new Services();
-    String currentPhotoPath;
+    private String currentPhotoPath;
     private int view = 0;
-    static final String serviceRecords = "serviceRecords";
 
 //    https://developer.android.com/training/camera/photobasics.html#java
 
@@ -56,59 +51,56 @@ public class ServiceFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_service, container,
                 false);
 
-        ImageView activeView;
-
-        ImageButton pictureButtonOne = (ImageButton) v.findViewById(R.id.addImageButtonOne);
+        final ImageButton pictureButtonOne = (ImageButton) v.findViewById(R.id.addImageButtonOne);
         Bundle newName = this.getArguments();
 
         pictureButtonOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
+                pictureButtonOne.setClickable(false);
+                pictureButtonOne.setVisibility(View.GONE);
             }
 
         });
 
-        ImageButton pictureButtonTwo = (ImageButton) v.findViewById(R.id.addImageButtonTwo);
+        final ImageButton pictureButtonTwo = (ImageButton) v.findViewById(R.id.addImageButtonTwo);
         pictureButtonTwo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
+                pictureButtonTwo.setClickable(false);
+                pictureButtonTwo.setVisibility(View.GONE);
             }
         });
 
-        ImageButton pictureButtonThree = (ImageButton) v.findViewById(R.id.addImageButtonThree);
+        final ImageButton pictureButtonThree = (ImageButton) v.findViewById(R.id.addImageButtonThree);
         pictureButtonThree.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 dispatchTakePictureIntent();
+                pictureButtonThree.setClickable(false);
+                pictureButtonThree.setVisibility(View.GONE);
             }
         });
         final EditText mileage = (EditText) v.findViewById(R.id.mileage_entered);
         final EditText partNumberOne = (EditText) v.findViewById(R.id.partNumberOne);
         final EditText partNumberTwo = (EditText) v.findViewById(R.id.partNumberTwo);
         final EditText partNumberThree = (EditText) v.findViewById(R.id.partNumberThree);
-        final SharedPreferences mPrefs = getActivity().getPreferences(MODE_PRIVATE);
-        final SharedPreferences.Editor editor = mPrefs.edit();
         Button saveButton = (Button) v.findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //List<String> serviceList = new ArrayList<>();  // for storing location of gson of repairs
-
-                //save data into service object
-                if(mileage.getText().toString() != ""){
-
-                }
 
                 try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
                 catch(Exception e){
                     Log.e("","mileage not entered");
                 }
-//                service.setMileage((Integer.parseInt(mileage.getText().toString())));
+
                 service.addPartNumber(partNumberOne.getText().toString());
                 service.addPartNumber(partNumberTwo.getText().toString());
                 service.addPartNumber(partNumberThree.getText().toString());
+                service.setDate(new SimpleDateFormat("dd mm dddd").format(new Date()));
 
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
