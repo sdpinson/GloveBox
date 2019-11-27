@@ -32,13 +32,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void loadServices() {
-        SharedPreferences prefs = getSharedPreferences("shared pregerences", MODE_PRIVATE);
+        Log.i("loadServices","Service Object List loading");
+        SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
         String json = prefs.getString(SERVICE_LIST_ID,null);
         Type type = new TypeToken<ArrayList<Services>>() {}.getType();
         serviceList = gson.fromJson(json, type);
 
-        if(serviceList == null) serviceList  = new ArrayList<>();
+
+        if(serviceList == null) {serviceList  = new ArrayList<>(); Log.i("loadServices","no existing service list");}
+        else{Log.i("loadServices",serviceList.get(0).getId());}
     }
 
 
