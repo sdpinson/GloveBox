@@ -104,7 +104,7 @@ public class ServiceFragment extends Fragment {
                 service.addPartNumber(partNumberOne.getText().toString());
                 service.addPartNumber(partNumberTwo.getText().toString());
                 service.addPartNumber(partNumberThree.getText().toString());
-                service.setDate(new SimpleDateFormat("dd mm dddd").format(new Date()));
+                service.setDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
 
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
@@ -131,12 +131,23 @@ public class ServiceFragment extends Fragment {
                 if(partNumberOne != null) service.addPartNumber(partNumberOne.getText().toString());
                 if(partNumberTwo != null) service.addPartNumber(partNumberTwo.getText().toString());
                 service.addPartNumber(partNumberThree.getText().toString());
-                service.setDate(new SimpleDateFormat("dd mm yy").format(new Date()));
+                service.setDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
 
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
                 main.serviceList.add(service);
                 main.saveServices(main.SERVICE_LIST_ID,main.serviceList);
+
+                // check to see if service was previously saved as in progress and remove
+                // from that list
+
+                // redirect to History
+                Fragment fragment = new HistoryFragment();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container,
+                        fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .commit();
+//                main.changeTabIndicator();
             }
         });
 
