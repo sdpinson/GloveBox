@@ -1,11 +1,16 @@
 package com.cpsc4150.glovebox.Fragments;
 
+import android.content.Context;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,9 +20,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.cpsc4150.glovebox.R;
 
 public class NewItemFragment extends Fragment {
+    private Boolean flashLightFlag = false;
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v =  inflater.inflate(R.layout.fragment_newitem,container, false);
         final Button coolantServiceButton = (Button) v.findViewById(R.id.CoolantServiceButton);
         final Button oilServiceButton = (Button) v.findViewById(R.id.oilChangeButton);
@@ -25,6 +31,37 @@ public class NewItemFragment extends Fragment {
         final Button transServiceButton = (Button) v.findViewById(R.id.transServiceButton);
         final Button tireRotationButton = (Button) v.findViewById(R.id.tireRotationButton);
         final Button ignitionServiceButton = (Button) v.findViewById(R.id.ignitionButton);
+        final ImageView flashLight = (ImageView)v.findViewById(R.id.flashLight);
+        //Manager for the camera
+        final CameraManager cameraManager = (CameraManager) container.getContext().getSystemService(Context.CAMERA_SERVICE);
+
+        //Toggles the flashlight when clicked
+        flashLight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String cameraId;
+                try{
+                    cameraId = cameraManager.getCameraIdList()[0];
+                    if (!flashLightFlag){
+                        try{
+                            cameraManager.setTorchMode(cameraId,true);
+                            flashLightFlag = true;
+                        } catch (CameraAccessException e){
+
+                        }
+
+                    }
+                    else {
+                        cameraManager.setTorchMode(cameraId,false);
+                        flashLightFlag = false;
+
+                    }
+                }catch (CameraAccessException e) {
+
+                }
+            }
+        });
+
 
         //Each on click listener now contains a bundle that passes the title of the button pressed
         //to the service fragment for better readability. 

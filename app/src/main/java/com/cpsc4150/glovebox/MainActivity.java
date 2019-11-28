@@ -25,8 +25,10 @@ public class MainActivity extends AppCompatActivity {
     public final String IN_PROGRESS_LIST_ID = "IN_PROGRESS_LIST_ID";
     public List<Services> serviceList;
     public List<Services> inProgressList;
+    //Media Player to play sounds
     private MediaPlayer mMediaPlayer;
 
+    //Plays a sound when the app first starts
     @Override
     protected void onResume() {
         super.onResume();
@@ -79,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch(tab.getPosition()){
                         case 0:
+                            //Plays a sound on each tab selection
                             mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carhorn);
                             mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
@@ -108,9 +111,24 @@ public class MainActivity extends AppCompatActivity {
 
                 }
 
+
                 @Override
                 public void onTabReselected(TabLayout.Tab tab) {
-
+                    Fragment selectedFragment = null;
+                    switch(tab.getPosition()){
+                        case 0:
+                            selectedFragment = new HistoryFragment();
+                            break;
+                        case 1:
+                            selectedFragment = new NewItemFragment();
+                            break;
+                        case 2:
+                            selectedFragment = new InProgressFragment();
+                            break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                            .commit();
                 }
             };
 
