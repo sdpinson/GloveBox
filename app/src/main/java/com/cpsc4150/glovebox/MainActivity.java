@@ -3,11 +3,12 @@ package com.cpsc4150.glovebox;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TableLayout;
+
 
 import com.cpsc4150.glovebox.Fragments.HistoryFragment;
 import com.cpsc4150.glovebox.Fragments.NewItemFragment;
@@ -26,6 +27,14 @@ public class MainActivity extends AppCompatActivity {
     public final String IN_PROGRESS_LIST_ID = "IN_PROGRESS_LIST_ID";
     public List<Services> serviceList;
     public List<Services> inProgressList;
+    private MediaPlayer mMediaPlayer;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMediaPlayer = MediaPlayer.create(this, R.raw.carhorn);
+        mMediaPlayer.start();
+    }
 
     public void saveServices(String SAVE_LOCATION, List<Services> list) {
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
@@ -73,14 +82,20 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch(tab.getPosition()){
                         case 0:
+                            mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carhorn);
+                            mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
                             selectedFragment = new HistoryFragment();
                             break;
                         case 1:
+                            mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carstart);
+                            mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
                             selectedFragment = new NewItemFragment();
                             break;
                         case 2:
+                            mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carhorn);
+                            mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
                             selectedFragment = new InProgressFragment();
                             break;
