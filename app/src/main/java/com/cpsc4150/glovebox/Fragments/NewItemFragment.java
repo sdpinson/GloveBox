@@ -18,8 +18,7 @@ public class NewItemFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v =  inflater.inflate(R.layout.fragment_newitem,container,
-                false);
+        View v =  inflater.inflate(R.layout.fragment_newitem,container, false);
         final Button coolantServiceButton = (Button) v.findViewById(R.id.CoolantServiceButton);
         final Button oilServiceButton = (Button) v.findViewById(R.id.oilChangeButton);
         final Button otherServiceButton = (Button) v.findViewById(R.id.otherServiceButton);

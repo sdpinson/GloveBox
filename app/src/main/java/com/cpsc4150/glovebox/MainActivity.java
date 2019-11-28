@@ -3,10 +3,11 @@ package com.cpsc4150.glovebox;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+
 
 import com.cpsc4150.glovebox.Fragments.HistoryFragment;
 import com.cpsc4150.glovebox.Fragments.NewItemFragment;
@@ -22,6 +23,15 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public final String SERVICE_LIST_ID = "SERVICE_LIST";
     public List<Services> serviceList;
+    private MediaPlayer mMediaPlayer;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mMediaPlayer = MediaPlayer.create(this, R.raw.carhorn);
+        mMediaPlayer.start();
+    }
+
     public void saveServices() {
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
@@ -64,14 +74,20 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch(tab.getPosition()){
                         case 0:
+                            mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carhorn);
+                            mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
                             selectedFragment = new HistoryFragment();
                             break;
                         case 1:
+                            mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carstart);
+                            mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
                             selectedFragment = new NewItemFragment();
                             break;
                         case 2:
+                            mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carhorn);
+                            mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
                             selectedFragment = new InProgressFragment();
                             break;
