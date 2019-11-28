@@ -21,41 +21,46 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public final String SERVICE_LIST_ID = "SERVICE_LIST";
+    public final String IN_PROGRESS_LIST_ID = "IN_PROGRESS_LIST_ID";
     public List<Services> serviceList;
-    public void saveServices() {
+    public List<Services> inProgressList;
+    public void saveServices(String SAVE_LOCATION, List<Services> list) {
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         Gson gson = new Gson();
-        String json = gson.toJson(serviceList);
-        editor.putString(SERVICE_LIST_ID, json);
+        String json = gson.toJson(list);
+        editor.putString(SAVE_LOCATION, json);
         editor.apply();
     }
 
-    public void loadServices() {
+    public List<Services> loadServices(String SAVE_LOCATION) {
+        List<Services> list;
         Log.i("loadServices","Service Object List loading");
         SharedPreferences prefs = getSharedPreferences("shared preferences", MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = prefs.getString(SERVICE_LIST_ID,null);
+        String json = prefs.getString(SAVE_LOCATION,null);
         Type type = new TypeToken<ArrayList<Services>>() {}.getType();
-        serviceList = gson.fromJson(json, type);
+        list = gson.fromJson(json, type);
 
-
-        if(serviceList == null) {serviceList  = new ArrayList<>(); Log.i("loadServices","no existing service list");}
-        else{Log.i("loadServices",serviceList.get(0).getId());}
+        return(list);
     }
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        loadServices();
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        serviceList = loadServices(SERVICE_LIST_ID);
+        if (serviceList == null) serviceList = new ArrayList<>();
+        inProgressList = loadServices(IN_PROGRESS_LIST_ID);
+        if (inProgressList == null) inProgressList = new ArrayList<>();
 
-        TabLayout tabs = findViewById(R.id.tabs);
-        tabs.setOnTabSelectedListener(tabListener);
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new HistoryFragment()).commit();
+                TabLayout tabs = findViewById(R.id.tabs);
+                tabs.setOnTabSelectedListener(tabListener);
+
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HistoryFragment()).commit();
     }
     private TabLayout.OnTabSelectedListener tabListener =
             new TabLayout.OnTabSelectedListener() {

@@ -90,6 +90,8 @@ public class ServiceFragment extends Fragment {
         final EditText partNumberOne = (EditText) v.findViewById(R.id.partNumberOne);
         final EditText partNumberTwo = (EditText) v.findViewById(R.id.partNumberTwo);
         final EditText partNumberThree = (EditText) v.findViewById(R.id.partNumberThree);
+//        save on click, sends the created service to the in progress list and shows in
+//        the in progress tab
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -106,8 +108,8 @@ public class ServiceFragment extends Fragment {
 
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
-                main.serviceList.add(service);
-                main.saveServices();
+                main.inProgressList.add(service);
+                main.saveServices(main.IN_PROGRESS_LIST_ID,main.inProgressList);
 
                 Fragment fragment = new InProgressFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -134,7 +136,7 @@ public class ServiceFragment extends Fragment {
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
                 main.serviceList.add(service);
-                main.saveServices();
+                main.saveServices(main.SERVICE_LIST_ID,main.serviceList);
             }
         });
 
