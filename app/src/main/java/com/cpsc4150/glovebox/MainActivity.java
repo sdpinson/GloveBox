@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TableLayout;
 
 
 import com.cpsc4150.glovebox.Fragments.HistoryFragment;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
     public final String SERVICE_LIST_ID = "SERVICE_LIST";
     public final String IN_PROGRESS_LIST_ID = "IN_PROGRESS_LIST_ID";
     public List<Services> serviceList;
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         serviceList = loadServices(SERVICE_LIST_ID);
         if (serviceList == null) serviceList = new ArrayList<>();
         inProgressList = loadServices(IN_PROGRESS_LIST_ID);
@@ -131,6 +134,4 @@ public class MainActivity extends AppCompatActivity {
                             .commit();
                 }
             };
-
-
 }
