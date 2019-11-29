@@ -10,8 +10,8 @@
     <color name="serviceButtonColor">#668F8F8F</color>
     <color name="fragmentBackGroundColor">#BFFFFFFF</color>
     <color name="appBackground">#4D3876</color>
-<!--    <color name="indicatorTabColor">#FFFF8D</color>-->
-    <color name="indicatorTabColor">#00FFFF8D</color>
+    <color name="indicatorTabColor">#FFFF8D</color>
+<!--    <color name="indicatorTabColor">#00FFFF8D</color>-->
     <color name="tabBarColor">#621290</color>
     <color name="fullTransColor">#00000000</color>
 </resources>

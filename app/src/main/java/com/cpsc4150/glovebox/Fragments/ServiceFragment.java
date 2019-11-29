@@ -111,7 +111,7 @@ public class ServiceFragment extends Fragment {
                 main.inProgressList.add(service);
                 main.saveServices(main.IN_PROGRESS_LIST_ID,main.inProgressList);
 
-                Fragment fragment = new InProgressFragment();
+                Fragment fragment = new NewItemFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,
                         fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -142,7 +142,7 @@ public class ServiceFragment extends Fragment {
                 // from that list
 
                 // redirect to History
-                Fragment fragment = new HistoryFragment();
+                Fragment fragment = new NewItemFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,
                         fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
