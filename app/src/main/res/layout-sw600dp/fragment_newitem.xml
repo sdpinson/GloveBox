@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fragmentBackGroundColor"
+    >
+
+    <Button
+        android:id="@+id/CoolantServiceButton"
+        android:layout_width="234dp"
+        android:layout_height="212dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="300dp"
+        android:layout_toEndOf="@+id/tireRotationButton"
+        android:backgroundTint="@color/serviceButtonColor"
+        android:text="@string/CoolantServiceButton"
+        android:textColor="@color/appBarText" />
+
+    <Button
+        android:id="@+id/otherServiceButton"
+        android:layout_width="234dp"
+        android:layout_height="212dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="300dp"
+        android:layout_toEndOf="@+id/CoolantServiceButton"
+        android:backgroundTint="@color/serviceButtonColor"
+        android:text="@string/OtherServiceButton"
+        android:textColor="@color/appBarText" />
+
+    <Button
+        android:id="@+id/transServiceButton"
+        android:layout_width="234dp"
+        android:layout_height="212dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/oilChangeButton"
+        android:backgroundTint="@color/serviceButtonColor"
+        android:text="@string/ServiceTrans"
+        android:textColor="@color/appBarText" />
+
+    <Button
+        android:id="@+id/oilChangeButton"
+        android:layout_width="234dp"
+        android:layout_height="212dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/serviceButtonColor"
+        android:text="@string/ChangeOilButton"
+        android:textColor="@color/appBarText" />
+
+    <Button
+        android:id="@+id/tireRotationButton"
+        android:layout_width="234dp"
+        android:layout_height="212dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="300dp"
+        android:backgroundTint="@color/serviceButtonColor"
+        android:text="@string/TireRotationButton"
+        android:textColor="@color/appBarText" />
+
+    <Button
+        android:id="@+id/ignitionButton"
+        android:layout_width="234dp"
+        android:layout_height="212dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@+id/transServiceButton"
+        android:backgroundTint="@color/serviceButtonColor"
+        android:text="@string/IgnitionButton"
+        android:textColor="@color/appBarText" />
+
+    <ImageView
+        android:id="@+id/flashLight"
+        android:layout_width="253dp"
+        android:layout_height="245dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_toEndOf="@id/ignitionButton"
+        app:srcCompat="@android:drawable/ic_menu_camera" />
+</RelativeLayout>
