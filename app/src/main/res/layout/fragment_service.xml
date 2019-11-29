@@ -130,7 +130,8 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/partNumberThree" />
+        app:layout_constraintTop_toBottomOf="@+id/partNumberThree"
+        app:srcCompat="@color/appBarText" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -193,7 +194,7 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smallImageView"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@color/appBarText" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -203,7 +204,7 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@color/appBarText" />
 
     <ImageButton
         android:id="@+id/addImageButtonOne"
@@ -254,5 +255,17 @@
         android:text="@string/completeButton"
         app:layout_constraintEnd_toStartOf="@+id/saveButton"
         app:layout_constraintTop_toBottomOf="@+id/editText6" />
+
+    <EditText
+        android:id="@+id/additionalNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="31dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/empty"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addImageButtonTwo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

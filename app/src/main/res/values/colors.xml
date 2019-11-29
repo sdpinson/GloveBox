@@ -5,7 +5,7 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="appBarBackround">#90C</color>
-    <color name="appBarText">#FFF</color>
+    <color name="appBarText">#FFFFFF</color>
     <color name="appBarNameColor">#000</color>
     <color name="serviceButtonColor">#668F8F8F</color>
     <color name="fragmentBackGroundColor">#BFFFFFFF</color>
