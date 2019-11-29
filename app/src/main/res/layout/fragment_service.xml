@@ -137,7 +137,8 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/partNumberThree" />
+        app:layout_constraintTop_toBottomOf="@+id/partNumberThree"
+        app:srcCompat="@color/appBarText" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -200,7 +201,7 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smallImageView"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@color/appBarText" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -210,7 +211,7 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/ic_launcher_background" />
+        app:srcCompat="@color/appBarText" />
 
     <ImageButton
         android:id="@+id/addImageButtonOne"
