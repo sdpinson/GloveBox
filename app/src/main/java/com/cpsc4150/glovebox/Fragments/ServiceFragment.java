@@ -30,6 +30,8 @@ import com.cpsc4150.glovebox.MainActivity;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
 
+import org.w3c.dom.Text;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -49,12 +51,14 @@ public class ServiceFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_service, container,
                 false);
+        Bundle newName = this.getArguments();
+        final TextView titleName = v.findViewById(R.id.titleText);
+
 
         final ImageButton pictureButtonOne = (ImageButton) v.findViewById(R.id.addImageButtonOne);
-        Bundle newName = this.getArguments();
 
         pictureButtonOne.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,8 +99,9 @@ public class ServiceFragment extends Fragment {
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-
+                //Sets the name for each saved service
+                service.setStateComplete();
+                service.setName(titleName.getText().toString());
                 try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
                 catch(Exception e){
                     Log.e("","mileage not entered");
@@ -122,7 +127,9 @@ public class ServiceFragment extends Fragment {
         completeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //Sets the name of the service that has been completed
                 service.setStateComplete();
+                service.setName(titleName.getText().toString());
 
                 try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
                 catch(Exception e){
@@ -147,13 +154,10 @@ public class ServiceFragment extends Fragment {
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,
                         fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit();
-//                main.changeTabIndicator();
+                //main.changeTabIndicator();
             }
         });
-
-
-        TextView name = v.findViewById(R.id.titleText);
-        name.setText(newName.getString("Name"));
+        titleName.setText(newName.getString("Name"));
         return (v);
     }
 
