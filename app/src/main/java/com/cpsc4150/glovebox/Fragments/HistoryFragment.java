@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +18,6 @@ import com.cpsc4150.glovebox.Adapters.HistoryFragmentAdapter;
 import com.cpsc4150.glovebox.MainActivity;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class HistoryFragment extends Fragment{
