@@ -72,7 +72,7 @@ public class Services {
 
     public String getRepairImage(int imageNumber) {return(repairImages.get(imageNumber));}
 
-    public void addRepairImage(String imageLink) {repairImages.add(imageLink);}
+    public void addRepairImage(String imagePath) {repairImages.add(imagePath);}
 
     public String getReceiptImage(int imageNumber) {return(receiptImages.get(imageNumber));}
 

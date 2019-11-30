@@ -190,7 +190,7 @@ public class ServiceFragment extends Fragment {
             switch(view){
                 case 0:{
                     setPic(viewOne);
-                    Log.i("image set","View One");
+                    Log.i("Service Fragment","Image One Set\n"+currentPhotoPath);
                     view++;
                     service.addRepairImage(currentPhotoPath);
                     //disable button
@@ -198,7 +198,7 @@ public class ServiceFragment extends Fragment {
                 }
                 case 1:{
                     setPic(viewTwo);
-                    Log.i("image set","View Two");
+                    Log.i("Service Fragment","Image Two Set\n"+currentPhotoPath);
                     view++;
                     service.addRepairImage(currentPhotoPath);
                     //disable button
@@ -206,7 +206,7 @@ public class ServiceFragment extends Fragment {
                 }
                 case 2:{
                     setPic(viewThree);
-                    Log.i("image set","View Three");
+                    Log.i("Service Fragment","Image Three Set\n"+currentPhotoPath);
                     view++;
                     service.addRepairImage(currentPhotoPath);
                     //disable button

@@ -1,9 +1,13 @@
 package com.cpsc4150.glovebox.Adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,6 +49,19 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
                 .inflate(R.layout.history_card, parent, false);
         return new MyViewHolder(view);
     }
+    private boolean setImageView(ImageView imageView,int pos, int pic){
+        try{
+            String imageFilePath = servicesList.get(pos).getRepairImage(pic);
+            Bitmap bmImg = BitmapFactory.decodeFile(imageFilePath);
+            imageView.setImageBitmap(bmImg);
+            Log.i("History Fragment Adapt","setting image\n"+imageFilePath);
+            return(true);
+        }
+        catch(Exception e){
+            Log.i("History Fragment Adapt","Image does not exist");
+            return(false);
+        }
+    }
 
     //Will iterate through the list of all services to display them
     @Override
@@ -55,14 +72,23 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
         //Sets the button for each card view and allows the text to be displayed on button press
         final TextView hiddenText = holder.itemView.findViewById(R.id.hiddenText);
         final Button detailsButton = holder.itemView.findViewById(R.id.detailsButton);
+        final ImageView repairImageOne = holder.itemView.findViewById(R.id.hiddenImageOne);
+        final ImageView repairImageTwo = holder.itemView.findViewById(R.id.hiddenImageTwo);
+        final ImageView repairImageThree = holder.itemView.findViewById(R.id.hiddenImageThree);
+        setImageView(repairImageOne,position,0);
+        setImageView(repairImageTwo,position,1);
+        setImageView(repairImageThree,position,2);
+
         detailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(hiddenText.getVisibility() == View.GONE){
+                    //repairImageOne.setVisibility(View.VISIBLE);
                     hiddenText.setVisibility(View.VISIBLE);
                     detailsButton.setText(R.string.LessDetails);
                 }
                 else {
+                    //repairImageOne.setVisibility(View.GONE);
                     hiddenText.setVisibility(View.GONE);
                     detailsButton.setText(R.string.MoreDetails);
                 }
