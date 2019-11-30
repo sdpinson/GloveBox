@@ -16,6 +16,7 @@ public class Services {
     private String date;
     private String description;
     private List<String> repairImages = new ArrayList<>();
+    private List<String> repairImagesDesc = new ArrayList<>();
     private List<String> receiptImages = new ArrayList<>();
     private List<String>  partNumbers = new ArrayList<>();
     private int mileage;
@@ -29,6 +30,10 @@ public class Services {
     }
 
     public void addPartNumber(String partNumber){partNumbers.add(partNumber);}
+
+    public void addImageDesc(String decsription){repairImagesDesc.add(description);}
+
+    public String getImageDesc(int imageNum){return this.repairImagesDesc.get(imageNum);}
 
     public String getPartNumber(int partNumber){return partNumbers.get(partNumber);}
 

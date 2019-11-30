@@ -161,7 +161,7 @@
         app:barrierDirection="top" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/imageOneDesc"
         android:layout_width="133dp"
         android:layout_height="47dp"
         android:layout_marginEnd="50dp"
@@ -172,7 +172,7 @@
         app:layout_constraintTop_toBottomOf="@+id/partNumberThree" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/imageTwoDesc"
         android:layout_width="133dp"
         android:layout_height="47dp"
         android:layout_marginEnd="50dp"
@@ -180,10 +180,10 @@
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/imageOneDesc" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/imageThreeDesc"
         android:layout_width="133dp"
         android:layout_height="47dp"
         android:layout_marginEnd="50dp"
@@ -191,7 +191,7 @@
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/imageTwoDesc" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -251,7 +251,7 @@
         android:layout_marginEnd="8dp"
         android:text="@string/saveButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/imageThreeDesc" />
 
     <Button
         android:id="@+id/completeButton"
@@ -261,7 +261,7 @@
         android:layout_marginEnd="5dp"
         android:text="@string/completeButton"
         app:layout_constraintEnd_toStartOf="@+id/saveButton"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/imageThreeDesc" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

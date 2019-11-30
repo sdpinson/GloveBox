@@ -89,13 +89,16 @@ public class ServiceFragment extends Fragment {
                 pictureButtonThree.setVisibility(View.GONE);
             }
         });
-        Button saveButton = (Button) v.findViewById(R.id.saveButton);
         final EditText mileage = (EditText) v.findViewById(R.id.mileage_entered);
         final EditText partNumberOne = (EditText) v.findViewById(R.id.partNumberOne);
         final EditText partNumberTwo = (EditText) v.findViewById(R.id.partNumberTwo);
         final EditText partNumberThree = (EditText) v.findViewById(R.id.partNumberThree);
+        final EditText imageDescOne = (EditText) v.findViewById(R.id.imageOneDesc);
+        final EditText imageDescTwo = (EditText) v.findViewById(R.id.imageTwoDesc);
+        final EditText imageDescThree = (EditText) v.findViewById(R.id.imageThreeDesc);
 //        save on click, sends the created service to the in progress list and shows in
 //        the in progress tab
+        Button saveButton = (Button) v.findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -110,6 +113,12 @@ public class ServiceFragment extends Fragment {
                 service.addPartNumber(partNumberTwo.getText().toString());
                 service.addPartNumber(partNumberThree.getText().toString());
                 service.setDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
+                if(partNumberOne != null) service.addPartNumber(partNumberOne.getText().toString());
+                if(partNumberTwo != null) service.addPartNumber(partNumberTwo.getText().toString());
+                if(partNumberThree != null) service.addPartNumber(partNumberThree.getText().toString());
+                if(imageDescOne != null) service.addImageDesc(imageDescOne.getText().toString());
+                if(imageDescTwo != null) service.addImageDesc(imageDescTwo.getText().toString());
+                if(imageDescThree != null) service.addImageDesc(imageDescThree.getText().toString());
 
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
@@ -137,6 +146,10 @@ public class ServiceFragment extends Fragment {
                 }
                 if(partNumberOne != null) service.addPartNumber(partNumberOne.getText().toString());
                 if(partNumberTwo != null) service.addPartNumber(partNumberTwo.getText().toString());
+                if(partNumberThree != null) service.addPartNumber(partNumberThree.getText().toString());
+                if(imageDescOne != null) service.addImageDesc(imageDescOne.getText().toString());
+                if(imageDescTwo != null) service.addImageDesc(imageDescTwo.getText().toString());
+                if(imageDescThree != null) service.addImageDesc(imageDescThree.getText().toString());
                 service.addPartNumber(partNumberThree.getText().toString());
                 service.setDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
 
