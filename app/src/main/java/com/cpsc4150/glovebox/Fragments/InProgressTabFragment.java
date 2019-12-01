@@ -13,16 +13,15 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cpsc4150.glovebox.Adapters.HistoryFragmentAdapter;
 import com.cpsc4150.glovebox.Adapters.InProgressAdapter;
 import com.cpsc4150.glovebox.MainActivity;
 import com.cpsc4150.glovebox.R;
 
-public class InProgressFragment extends Fragment {
+public class InProgressTabFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(R.layout.fragment_in_progress,container,false);
+        View fragmentView = inflater.inflate(R.layout.fragment_in_progress_tab,container,false);
 
         MainActivity main = (MainActivity) this.getActivity();
         RecyclerView progressRV = fragmentView.findViewById(R.id.inProgressRV);

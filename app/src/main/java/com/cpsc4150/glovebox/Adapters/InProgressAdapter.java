@@ -9,12 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.cpsc4150.glovebox.Fragments.InProgressServiceFragment;
-import com.cpsc4150.glovebox.Fragments.NewItemFragment;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
 

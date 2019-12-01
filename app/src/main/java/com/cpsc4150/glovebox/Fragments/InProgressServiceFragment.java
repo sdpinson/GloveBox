@@ -47,7 +47,7 @@ public class InProgressServiceFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_service, container,
+        View v = inflater.inflate(R.layout.fragment_new_item_input, container,
                 false);
         Bundle newName = this.getArguments();
         final TextView titleName = v.findViewById(R.id.titleText);
@@ -120,7 +120,7 @@ public class InProgressServiceFragment extends Fragment {
                 main.inProgressList.add(service);
                 main.saveServices(main.IN_PROGRESS_LIST_ID,main.inProgressList);
 
-                Fragment fragment = new NewItemFragment();
+                Fragment fragment = new NewItemTabFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,
                         fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -157,7 +157,7 @@ public class InProgressServiceFragment extends Fragment {
                 // from that list
 
                 // redirect to History
-                Fragment fragment = new NewItemFragment();
+                Fragment fragment = new InProgressTabFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,
                         fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)

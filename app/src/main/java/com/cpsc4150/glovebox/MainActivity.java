@@ -7,12 +7,11 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.TableLayout;
 
 
-import com.cpsc4150.glovebox.Fragments.HistoryFragment;
-import com.cpsc4150.glovebox.Fragments.NewItemFragment;
-import com.cpsc4150.glovebox.Fragments.InProgressFragment;
+import com.cpsc4150.glovebox.Fragments.HistoryTabFragment;
+import com.cpsc4150.glovebox.Fragments.InProgressTabFragment;
+import com.cpsc4150.glovebox.Fragments.NewItemTabFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -75,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 tabs.setOnTabSelectedListener(tabListener);
 
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HistoryFragment()).commit();
+                        new HistoryTabFragment()).commit();
     }
     private TabLayout.OnTabSelectedListener tabListener =
             new TabLayout.OnTabSelectedListener() {
@@ -88,19 +87,19 @@ public class MainActivity extends AppCompatActivity {
                             mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carhorn);
                             mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
-                            selectedFragment = new HistoryFragment();
+                            selectedFragment = new HistoryTabFragment();
                             break;
                         case 1:
                             mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carstart);
                             mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
-                            selectedFragment = new NewItemFragment();
+                            selectedFragment = new NewItemTabFragment();
                             break;
                         case 2:
                             mMediaPlayer = MediaPlayer.create(MainActivity.this,R.raw.carhorn);
                             mMediaPlayer.start();
                             Log.i("Selected Fragment", "History");
-                            selectedFragment = new InProgressFragment();
+                            selectedFragment = new InProgressTabFragment();
                             break;
                     }
                     Log.i("Committing Fragment: ", "Selected Fragment");
@@ -120,13 +119,13 @@ public class MainActivity extends AppCompatActivity {
                     Fragment selectedFragment = null;
                     switch(tab.getPosition()){
                         case 0:
-                            selectedFragment = new HistoryFragment();
+                            selectedFragment = new HistoryTabFragment();
                             break;
                         case 1:
-                            selectedFragment = new NewItemFragment();
+                            selectedFragment = new NewItemTabFragment();
                             break;
                         case 2:
-                            selectedFragment = new InProgressFragment();
+                            selectedFragment = new InProgressTabFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

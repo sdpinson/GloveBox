@@ -1,7 +1,6 @@
 package com.cpsc4150.glovebox.Fragments;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,17 +29,14 @@ import com.cpsc4150.glovebox.MainActivity;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
 
-import org.w3c.dom.Text;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
-import static android.content.Context.MODE_PRIVATE;
 
-public class NewServiceFragment extends Fragment {
+public class NewItemInputFragment extends Fragment {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private Services service = new Services();
@@ -52,7 +48,7 @@ public class NewServiceFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_service, container,
+        View v = inflater.inflate(R.layout.fragment_new_item_input, container,
                 false);
         Bundle newName = this.getArguments();
         final TextView titleName = v.findViewById(R.id.titleText);
@@ -125,7 +121,7 @@ public class NewServiceFragment extends Fragment {
                 main.inProgressList.add(service);
                 main.saveServices(main.IN_PROGRESS_LIST_ID,main.inProgressList);
 
-                Fragment fragment = new NewItemFragment();
+                Fragment fragment = new NewItemTabFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,
                         fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -162,7 +158,7 @@ public class NewServiceFragment extends Fragment {
                 // from that list
 
                 // redirect to History
-                Fragment fragment = new NewItemFragment();
+                Fragment fragment = new NewItemTabFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,
                         fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)

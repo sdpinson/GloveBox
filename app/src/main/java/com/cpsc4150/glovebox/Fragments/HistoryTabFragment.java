@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,12 +19,12 @@ import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
 import java.util.List;
 
-public class HistoryFragment extends Fragment{
+public class HistoryTabFragment extends Fragment{
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View fragmentView = inflater.inflate(R.layout.fragment_history,container,false);
+        View fragmentView = inflater.inflate(R.layout.fragment_history_tab,container,false);
         MainActivity main = (MainActivity) this.getActivity();
         RecyclerView historyRV = fragmentView.findViewById(R.id.historyRV);
 
