@@ -41,45 +41,45 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/inProgressHiddenText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="This is a test of the expandable card view that will be implemented after
-            class todayThis is a test of the expandable card view that will be implemented after
-            class todayThis is a test of the expandable card view that will be implemented after
-            class todayThis is a test of the expandable card view that will be implemented after
-            class today"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/inProgressMiles"
-            tools:layout_editor_absoluteX="0dp" />
+<!--        <TextView-->
+<!--            android:id="@+id/inProgressHiddenText"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="This is a test of the expandable card view that will be implemented after-->
+<!--            class todayThis is a test of the expandable card view that will be implemented after-->
+<!--            class todayThis is a test of the expandable card view that will be implemented after-->
+<!--            class todayThis is a test of the expandable card view that will be implemented after-->
+<!--            class today"-->
+<!--            android:visibility="gone"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/inProgressMiles"-->
+<!--            tools:layout_editor_absoluteX="0dp" />-->
 
-        <Button
-            android:id="@+id/inProgressComplete"
-            android:layout_width="100dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/fullTransColor"
-            android:shadowColor="#00FFFFFF"
-            android:text="@string/completeButton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintEnd_toStartOf="@id/inProgressDate"
-            app:layout_constraintTop_toBottomOf="@+id/inProgressHiddenText" />
+<!--        <Button-->
+<!--            android:id="@+id/inProgressComplete"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:backgroundTint="@color/fullTransColor"-->
+<!--            android:shadowColor="#00FFFFFF"-->
+<!--            android:text="@string/completeButton"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.498"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/inProgressDate"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/inProgressHiddenText" />-->
 
-        <Button
-            android:id="@+id/inProgressSave"
-            android:layout_width="100dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/fullTransColor"
-            android:shadowColor="#00FFFFFF"
-            app:layout_constraintTop_toBottomOf="@id/inProgressHiddenText"
-            app:layout_constraintEnd_toEndOf="@id/inProgressID"
-            android:text="@string/saveButton"
-            />
+<!--        <Button-->
+<!--            android:id="@+id/inProgressSave"-->
+<!--            android:layout_width="100dp"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:backgroundTint="@color/fullTransColor"-->
+<!--            android:shadowColor="#00FFFFFF"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/inProgressHiddenText"-->
+<!--            app:layout_constraintEnd_toEndOf="@id/inProgressID"-->
+<!--            android:text="@string/saveButton"-->
+<!--            />-->
 
         <TextView
             android:id="@+id/miles"
