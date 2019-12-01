@@ -33,9 +33,15 @@ public class Services {
 
     public void addImageDesc(String decsription){repairImagesDesc.add(description);}
 
-    public String getImageDesc(int imageNum){return this.repairImagesDesc.get(imageNum);}
+    public String getImageDesc(int imageNum){
+        if(repairImagesDesc.size() > imageNum) return this.repairImagesDesc.get(imageNum);
+        else return null;
+    }
 
-    public String getPartNumber(int partNumber){return partNumbers.get(partNumber);}
+    public String getPartNumber(int partNumber){
+        if(partNumbers.size() > partNumber) return partNumbers.get(partNumber);
+        else return null;
+    }
 
     public String getId(){ return ID; }
 
@@ -75,7 +81,10 @@ public class Services {
 
     public void setStateComplete() {state = STATUS_COMPLETE;}
 
-    public String getRepairImage(int imageNumber) {return(repairImages.get(imageNumber));}
+    public String getRepairImage(int imageNumber) {
+        if(repairImages.size() > imageNumber) return(repairImages.get(imageNumber));
+        else return null;
+    }
 
     public void addRepairImage(String imagePath) {repairImages.add(imagePath);}
 

@@ -51,7 +51,7 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
     }
     //Will iterate through the list of all services to display them
     @Override
-    public void onBindViewHolder(InProgressAdapter.InProgressViewHolder holder, int position) {
+    public void onBindViewHolder(InProgressAdapter.InProgressViewHolder holder, final int position) {
         holder.miles.setText(Integer.toString(progressList.get(position).getMileage()));
         holder.date.setText(progressList.get(position).getDate());
         Services thisService = progressList.get(position);
@@ -61,7 +61,7 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                Fragment inProgressService = new InProgressServiceFragment();
+                Fragment inProgressService = new InProgressServiceFragment(position);
                 activity.getSupportFragmentManager().beginTransaction().replace(
                         R.id.fragment_container, inProgressService).addToBackStack(null).commit();
             }
