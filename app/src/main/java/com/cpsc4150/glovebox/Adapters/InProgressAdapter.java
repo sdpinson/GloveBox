@@ -64,8 +64,9 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                Fragment myFragment = new InProgressServiceFragment();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, myFragment).addToBackStack(null).commit();
+                Fragment inProgressService = new InProgressServiceFragment();
+                activity.getSupportFragmentManager().beginTransaction().replace(
+                        R.id.fragment_container, inProgressService).addToBackStack(null).commit();
             }
         });
     }
