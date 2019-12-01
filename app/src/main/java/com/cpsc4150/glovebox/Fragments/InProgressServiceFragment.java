@@ -62,7 +62,7 @@ public class InProgressServiceFragment extends Fragment {
         ImageView viewTwo = (ImageView) v.findViewById(R.id.imageView2);
         ImageView viewThree = (ImageView) v.findViewById(R.id.imageView3);
         Bundle newName = this.getArguments();
-        MainActivity main = (MainActivity) this.getActivity();
+        final MainActivity main = (MainActivity) this.getActivity();
         service = main.inProgressList.get(pos);
         final TextView titleName = v.findViewById(R.id.titleText);
 
@@ -156,7 +156,6 @@ public class InProgressServiceFragment extends Fragment {
 
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
-                main.inProgressList.add(service);
                 main.saveServices(main.IN_PROGRESS_LIST_ID,main.inProgressList);
 
                 Fragment fragment = new NewItemTabFragment();
@@ -173,6 +172,7 @@ public class InProgressServiceFragment extends Fragment {
                 //Sets the name of the service that has been completed
                 service.setStateComplete();
                 service.setName(titleName.getText().toString());
+                main.inProgressList.remove(pos);
 
                 try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
                 catch(Exception e){
