@@ -64,7 +64,6 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
         }
     }
 
-
     //Will iterate through the list of all services to display them
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {

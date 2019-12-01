@@ -71,8 +71,8 @@ public class NewItemFragment extends Fragment {
         coolantServiceButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Log.i("onClick coolantServiceButton", "should open ServiceFragment");
-                Fragment service = new ServiceFragment();
+                Log.i("onClick coolantServiceButton", "should open NewServiceFragment");
+                Fragment service = new NewServiceFragment();
                 Bundle name = new Bundle();
                 name.putString("Name",coolantServiceButton.getText().toString());
                 service.setArguments(name);
@@ -83,8 +83,8 @@ public class NewItemFragment extends Fragment {
        oilServiceButton.setOnClickListener(new View.OnClickListener(){
             @Override
            public void onClick(View v) {
-                Log.i("onClick oilServiceButton", "should open ServiceFragment");
-                Fragment service = new ServiceFragment();
+                Log.i("onClick oilServiceButton", "should open NewServiceFragment");
+                Fragment service = new NewServiceFragment();
                 Bundle name = new Bundle();
                 name.putString("Name",oilServiceButton.getText().toString());
                 service.setArguments(name);
@@ -95,8 +95,8 @@ public class NewItemFragment extends Fragment {
        otherServiceButton.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-               Log.i("onClick otherServiceButton", "should open ServiceFragment");
-               Fragment service = new ServiceFragment();
+               Log.i("onClick otherServiceButton", "should open NewServiceFragment");
+               Fragment service = new NewServiceFragment();
                Bundle name = new Bundle();
                name.putString("Name",otherServiceButton.getText().toString());
                service.setArguments(name);
@@ -107,8 +107,8 @@ public class NewItemFragment extends Fragment {
        transServiceButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Log.i("onClick transServiceButton", "should open ServiceFragment");
-               Fragment service = new ServiceFragment();
+               Log.i("onClick transServiceButton", "should open NewServiceFragment");
+               Fragment service = new NewServiceFragment();
                Bundle name = new Bundle();
                name.putString("Name",transServiceButton.getText().toString());
                service.setArguments(name);
@@ -119,8 +119,8 @@ public class NewItemFragment extends Fragment {
        tireRotationButton.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-               Log.i("onClick tireServiceButton", "should open ServiceFragment");
-               Fragment service = new ServiceFragment();
+               Log.i("onClick tireServiceButton", "should open NewServiceFragment");
+               Fragment service = new NewServiceFragment();
                Bundle name = new Bundle();
                name.putString("Name",tireRotationButton.getText().toString());
                service.setArguments(name);
@@ -131,8 +131,8 @@ public class NewItemFragment extends Fragment {
        ignitionServiceButton.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
-               Log.i("onClick ignitionServiceButton", "should open ServiceFragment");
-               Fragment service = new ServiceFragment();
+               Log.i("onClick ignitionServiceButton", "should open NewServiceFragment");
+               Fragment service = new NewServiceFragment();
                Bundle name = new Bundle();
                name.putString("Name",ignitionServiceButton.getText().toString());
                service.setArguments(name);

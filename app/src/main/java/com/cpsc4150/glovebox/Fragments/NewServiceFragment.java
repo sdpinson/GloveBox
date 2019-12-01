@@ -40,7 +40,7 @@ import java.util.Date;
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
 
-public class ServiceFragment extends Fragment {
+public class NewServiceFragment extends Fragment {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private Services service = new Services();
