@@ -1,6 +1,5 @@
 package com.cpsc4150.glovebox.Adapters;
 
-import android.app.Service;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;

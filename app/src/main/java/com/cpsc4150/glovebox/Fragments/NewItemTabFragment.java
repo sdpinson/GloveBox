@@ -1,6 +1,7 @@
 package com.cpsc4150.glovebox.Fragments;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class NewItemTabFragment extends Fragment {
                         try{
                             cameraManager.setTorchMode(cameraId,true);
                             flashLightFlag = true;
+                            flashLight.setImageResource(R.drawable.flashlight_on);
                         } catch (CameraAccessException e){
 
                         }
@@ -54,6 +56,7 @@ public class NewItemTabFragment extends Fragment {
                     else {
                         cameraManager.setTorchMode(cameraId,false);
                         flashLightFlag = false;
+                        flashLight.setImageResource(R.drawable.flashlight_off);
 
                     }
                 }catch (CameraAccessException e) {
