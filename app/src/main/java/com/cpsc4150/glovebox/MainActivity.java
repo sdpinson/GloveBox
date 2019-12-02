@@ -11,9 +11,15 @@
 package com.cpsc4150.glovebox;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.Manifest;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -83,11 +89,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
+     * <p>checks for granted permissions</p>
+     * @param context the current context
+     * @param permissions the array of permissions required
+     * @return true if all permissions were granted, false otherwise
+     */
+    public static boolean hasPermissions(Context context, String[] permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
      * <p>Defines the actions to be taken when the main activity is created</p>
      * @param savedInstanceState a saved instance of the main activity id one exist
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int REQUEST_ALL = 1;
+        String[] PERMISSIONS = {
+                android.Manifest.permission.WAKE_LOCK,
+                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                android.Manifest.permission.ACCESS_FINE_LOCATION,
+                android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                android.Manifest.permission.CAMERA
+        };
+
+        if (hasPermissions(this, PERMISSIONS) == false) {
+            ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_ALL);
+        }
 
         serviceList = loadServices(SERVICE_LIST_ID);
         if (serviceList == null) serviceList = new ArrayList<>();
