@@ -80,17 +80,15 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
      * @return
      */
     private boolean setImageView(ImageView imageView,int pos, int pic){
-        try{
+        if(servicesList.get(pos).getRepairImage(pic) != null){
             String imageFilePath = servicesList.get(pos).getRepairImage(pic);
             Bitmap bmImg = BitmapFactory.decodeFile(imageFilePath);
             imageView.setImageBitmap(bmImg);
             Log.i("History Fragment Adapt","setting image\n"+imageFilePath);
             return(true);
         }
-        catch(Exception e){
-            Log.i("History Fragment Adapt","Image does not exist");
-            return(false);
-        }
+        else
+            return false;
     }
 
     //Will iterate through the list of all services to display them

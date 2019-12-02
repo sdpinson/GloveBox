@@ -159,7 +159,7 @@ public class InProgressServiceFragment extends Fragment {
                 MainActivity main = (MainActivity) getActivity();
                 main.saveServices(main.IN_PROGRESS_LIST_ID,main.inProgressList);
 
-                Fragment fragment = new NewItemTabFragment();
+                Fragment fragment = new InProgressTabFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,
                         fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
