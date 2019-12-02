@@ -31,7 +31,7 @@ public class Services {
 
     public void addPartNumber(String partNumber){partNumbers.add(partNumber);}
 
-    public void addImageDesc(String imgDecsription){repairImagesDesc.add(imgDescription);}
+    public void addImageDesc(String imgDescription){repairImagesDesc.add(imgDescription);}
 
     public String getImageDesc(int imageNum){
         if(repairImagesDesc.size() > imageNum) return this.repairImagesDesc.get(imageNum);
