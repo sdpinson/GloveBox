@@ -30,6 +30,6 @@
 
     <string name="pictureDescriptionHint">Description</string>
     <string name="partNumberHint">PartNumber</string>
-    <string name="serviceDescriptionHint">Additional Description</string>
+    <string name="serviceDescriptionHint">Add a Note</string>
     <string name="mileageHint">Odometer Mileage</string>
 </resources>

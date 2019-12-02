@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
             android:ems="10"
+            android:hint="@string/partNumberHint"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/serviceDescriptionInput" />
@@ -169,6 +170,7 @@
             android:layout_marginEnd="50dp"
             android:clickable="false"
             android:ems="10"
+            android:hint="@string/pictureDescriptionHint"
             android:inputType="textPersonName"
             android:text="@string/empty"
             app:layout_constraintEnd_toEndOf="parent"

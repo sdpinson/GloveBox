@@ -149,7 +149,7 @@ public class InProgressEditFragment extends Fragment {
         if(service.getPartNumber(0) != null) partNumberOne.setText(service.getPartNumber(0));
         if(service.getPartNumber(1) != null) partNumberTwo.setText(service.getPartNumber(1));
         if(service.getPartNumber(2) != null) partNumberThree.setText(service.getPartNumber(2));
-        if(service.getNote() != null) note.setText(service.getName());
+        if(service.getNote() != null) note.setText(service.getNote());
 //        save on click, sends the created service to the in progress list and shows in
 //        the in progress tab
         Button saveButton = (Button) v.findViewById(R.id.saveButton);
