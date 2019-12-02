@@ -21,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.cpsc4150.glovebox.Fragments.InProgressServiceFragment;
+import com.cpsc4150.glovebox.Fragments.InProgressEditFragment;
 import com.cpsc4150.glovebox.R;
 import com.cpsc4150.glovebox.Services;
 
@@ -89,7 +89,7 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                Fragment inProgressService = new InProgressServiceFragment(position);
+                Fragment inProgressService = new InProgressEditFragment(position);
                 activity.getSupportFragmentManager().beginTransaction().replace(
                         R.id.fragment_container, inProgressService).addToBackStack(null).commit();
             }

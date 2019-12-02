@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:ems="10"
+        android:hint="@string/mileageHint"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/serviceDescriptionInput" />
@@ -60,6 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:ems="10"
+        android:hint="@string/partNumberHint"
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
@@ -82,6 +84,7 @@
         android:layout_marginTop="3dp"
         android:layout_marginEnd="30dp"
         android:ems="10"
+        android:hint="@string/serviceDescriptionHint"
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
@@ -97,15 +100,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="125dp"
-        android:text="@string/notes"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+<!--    <TextView-->
+<!--        android:id="@+id/textView4"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="30dp"-->
+<!--        android:layout_marginTop="125dp"-->
+<!--        android:text="@string/notes"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textView3" />-->
 
     <EditText
         android:id="@+id/partNumberTwo"
@@ -113,6 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:ems="10"
+        android:hint="@string/partNumberHint"
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
@@ -124,6 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"
         android:ems="10"
+        android:hint="@string/partNumberHint"
         android:inputType="textPersonName"
         android:text="@string/empty"
         app:layout_constraintEnd_toEndOf="parent"
@@ -165,8 +170,10 @@
         android:layout_height="47dp"
         android:layout_marginEnd="50dp"
         android:ems="10"
+        android:hint="@string/pictureDescriptionHint"
         android:inputType="textPersonName"
         android:text="@string/empty"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/partNumberThree" />
 
@@ -176,8 +183,10 @@
         android:layout_height="47dp"
         android:layout_marginEnd="50dp"
         android:ems="10"
+        android:hint="@string/pictureDescriptionHint"
         android:inputType="textPersonName"
         android:text="@string/empty"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageOneDesc" />
 
@@ -187,8 +196,10 @@
         android:layout_height="47dp"
         android:layout_marginEnd="50dp"
         android:ems="10"
+        android:hint="@string/pictureDescriptionHint"
         android:inputType="textPersonName"
         android:text="@string/empty"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageTwoDesc" />
 
@@ -223,7 +234,7 @@
         app:srcCompat="@drawable/union" />
 
     <ImageButton
-        android:id="@+id/addImageButtonTwo"
+        android:id="@+id/addImageButtonThree"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="356dp"
@@ -233,7 +244,7 @@
         app:srcCompat="@drawable/union" />
 
     <ImageButton
-        android:id="@+id/addImageButtonThree"
+        android:id="@+id/addImageButtonTwo"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginTop="290dp"

@@ -62,6 +62,16 @@ public class NewItemInputFragment extends Fragment {
         Bundle newName = this.getArguments();
         final TextView titleName = v.findViewById(R.id.titleText);
         titleName.setText(newName.getString("Name"));
+
+        final EditText mileage = (EditText) v.findViewById(R.id.mileage_entered);
+        final EditText partNumberOne = (EditText) v.findViewById(R.id.partNumberOne);
+        final EditText partNumberTwo = (EditText) v.findViewById(R.id.partNumberTwo);
+        final EditText partNumberThree = (EditText) v.findViewById(R.id.partNumberThree);
+        final EditText imageDescOne = (EditText) v.findViewById(R.id.imageOneDesc);
+        final EditText imageDescTwo = (EditText) v.findViewById(R.id.imageTwoDesc);
+        final EditText imageDescThree = (EditText) v.findViewById(R.id.imageThreeDesc);
+        final EditText note = (EditText) v.findViewById(R.id.serviceDescriptionInput);
+
         final ImageButton pictureButtonOne = (ImageButton) v.findViewById(R.id.addImageButtonOne);
 
         pictureButtonOne.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +80,8 @@ public class NewItemInputFragment extends Fragment {
                 dispatchTakePictureIntent();
                 pictureButtonOne.setClickable(false);
                 pictureButtonOne.setVisibility(View.GONE);
+                imageDescOne.setClickable(true);
+                imageDescOne.setText("Picture One");
             }
 
         });
@@ -81,6 +93,8 @@ public class NewItemInputFragment extends Fragment {
                 dispatchTakePictureIntent();
                 pictureButtonTwo.setClickable(false);
                 pictureButtonTwo.setVisibility(View.GONE);
+                imageDescTwo.setClickable(true);
+                imageDescTwo.setText("Picture Two");
             }
         });
 
@@ -91,15 +105,11 @@ public class NewItemInputFragment extends Fragment {
                 dispatchTakePictureIntent();
                 pictureButtonThree.setClickable(false);
                 pictureButtonThree.setVisibility(View.GONE);
+                imageDescThree.setClickable(true);
+                imageDescThree.setText("Picture Three");
             }
         });
-        final EditText mileage = (EditText) v.findViewById(R.id.mileage_entered);
-        final EditText partNumberOne = (EditText) v.findViewById(R.id.partNumberOne);
-        final EditText partNumberTwo = (EditText) v.findViewById(R.id.partNumberTwo);
-        final EditText partNumberThree = (EditText) v.findViewById(R.id.partNumberThree);
-        final EditText imageDescOne = (EditText) v.findViewById(R.id.imageOneDesc);
-        final EditText imageDescTwo = (EditText) v.findViewById(R.id.imageTwoDesc);
-        final EditText imageDescThree = (EditText) v.findViewById(R.id.imageThreeDesc);
+
 //        save on click, sends the created service to the in progress list and shows in
 //        the in progress tab
         Button saveButton = (Button) v.findViewById(R.id.saveButton);
@@ -117,12 +127,10 @@ public class NewItemInputFragment extends Fragment {
                 service.addPartNumber(partNumberTwo.getText().toString());
                 service.addPartNumber(partNumberThree.getText().toString());
                 service.setDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
-                if(partNumberOne != null) service.addPartNumber(partNumberOne.getText().toString());
-                if(partNumberTwo != null) service.addPartNumber(partNumberTwo.getText().toString());
-                if(partNumberThree != null) service.addPartNumber(partNumberThree.getText().toString());
                 if(imageDescOne != null) service.addImageDesc(imageDescOne.getText().toString());
                 if(imageDescTwo != null) service.addImageDesc(imageDescTwo.getText().toString());
                 if(imageDescThree != null) service.addImageDesc(imageDescThree.getText().toString());
+                if(note != null) service.setNote(note.getText().toString());
 
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
@@ -154,6 +162,7 @@ public class NewItemInputFragment extends Fragment {
                 if(imageDescOne != null) service.addImageDesc(imageDescOne.getText().toString());
                 if(imageDescTwo != null) service.addImageDesc(imageDescTwo.getText().toString());
                 if(imageDescThree != null) service.addImageDesc(imageDescThree.getText().toString());
+                if(note != null) service.setNote(note.getText().toString());
                 service.addPartNumber(partNumberThree.getText().toString());
                 service.setDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
 

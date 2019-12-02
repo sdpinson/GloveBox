@@ -24,6 +24,7 @@ public class Services {
     private String name; // Service name
     private String date; // Date the service was started
     private String description; // A user provided description of the service
+    private String note;
     private List<String> repairImages = new ArrayList<>(); // ArrayList of repair images
     private List<String> repairImagesDesc = new ArrayList<>(); // ArrayList of image descriptions, this and repairImages could be converted to its own object
     private List<String>  partNumbers = new ArrayList<>(); // ArrayList of partNumbers entered for the service performed
@@ -35,8 +36,13 @@ public class Services {
         name = "";
         date = "";
         description = "";
+        note = "";
         mileage = 000000;
     }
+
+    public void setNote(String string){this.note = string;}
+
+    public String getNote(){return this.note;}
 
     /**
      * <p>adds a part number to the partNumbers ArrayList</p>
@@ -68,6 +74,29 @@ public class Services {
     public String getPartNumber(int partNumber){
         if(partNumbers.size() > partNumber) return partNumbers.get(partNumber);
         else return null;
+    }
+
+
+    /**
+     * <p>allows for the replacement of the part number stored at the partNumber location</p>
+     * @param partNumber the location of the part number to replace
+     * @param partNum the part number to replace it with
+     * @return returns false if part number does not exist to replace
+     */
+    public boolean replacePartNumber(int partNumber, String partNum){
+        if(partNumbers.size() > partNumber) partNumbers.set(partNumber,partNum);
+        return false;
+    }
+
+    /**
+     * <p>allows for the replacement of image descriptions</p>
+     * @param imageLoc the location of the image description to be replaced
+     * @param imageDescr the image description to be stored
+     * @return returns false if no image desc exist at location
+     */
+    public boolean replaceImageDescription(int imageLoc, String imageDescr){
+        if(repairImagesDesc.size() > imageLoc) repairImagesDesc.set(imageLoc,imageDescr);
+        return false;
     }
 
     /**\

@@ -46,19 +46,20 @@ import java.util.Date;
 
 import static android.app.Activity.RESULT_OK;
 
-public class InProgressServiceFragment extends Fragment {
+public class InProgressEditFragment extends Fragment {
     private static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final int REQUEST_TAKE_PHOTO = 1;
     private Services service;
     private String currentPhotoPath;
     private int view = 0;
     private int pos;
-    // sets the servicePosition so that ther correct service in the service list may be used
-    public InProgressServiceFragment(int servicePosition) {pos = servicePosition;}
+    // sets the servicePosition so that the correct service in the service list may be used
+    public InProgressEditFragment(int servicePosition) {pos = servicePosition;}
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_new_item_input, container,
+        View v = inflater.inflate(R.layout.fragment_in_progress_service, container,
                 false);
         final EditText mileage = (EditText) v.findViewById(R.id.mileage_entered);
         final EditText partNumberOne = (EditText) v.findViewById(R.id.partNumberOne);
@@ -67,13 +68,15 @@ public class InProgressServiceFragment extends Fragment {
         final EditText imageDescOne = (EditText) v.findViewById(R.id.imageOneDesc);
         final EditText imageDescTwo = (EditText) v.findViewById(R.id.imageTwoDesc);
         final EditText imageDescThree = (EditText) v.findViewById(R.id.imageThreeDesc);
+        final EditText note = (EditText) v.findViewById(R.id.serviceDescriptionInput);
+        final TextView titleName = v.findViewById(R.id.titleText);
         ImageView viewOne = (ImageView) v.findViewById(R.id.smallImageView);
         ImageView viewTwo = (ImageView) v.findViewById(R.id.imageView2);
         ImageView viewThree = (ImageView) v.findViewById(R.id.imageView3);
-        final MainActivity main = (MainActivity) this.getActivity();
+        MainActivity main = (MainActivity) this.getActivity();
         //Sets the name of the service
         service = main.inProgressList.get(pos);
-        final TextView titleName = v.findViewById(R.id.titleText);
+
         titleName.setText(service.getName());
 
         final ImageButton pictureButtonOne = (ImageButton) v.findViewById(R.id.addImageButtonOne);
@@ -83,6 +86,8 @@ public class InProgressServiceFragment extends Fragment {
                 dispatchTakePictureIntent();
                 pictureButtonOne.setClickable(false);
                 pictureButtonOne.setVisibility(View.GONE);
+                imageDescOne.setClickable(true);
+                imageDescOne.setText("Picture One");
             }
 
         });
@@ -94,6 +99,8 @@ public class InProgressServiceFragment extends Fragment {
                 dispatchTakePictureIntent();
                 pictureButtonTwo.setClickable(false);
                 pictureButtonTwo.setVisibility(View.GONE);
+                imageDescTwo.setClickable(true);
+                imageDescTwo.setText("Picture Two");
             }
         });
 
@@ -104,13 +111,15 @@ public class InProgressServiceFragment extends Fragment {
                 dispatchTakePictureIntent();
                 pictureButtonThree.setClickable(false);
                 pictureButtonThree.setVisibility(View.GONE);
+                imageDescThree.setClickable(true);
+                imageDescThree.setText("Picture Three");
             }
         });
         // load existing items
-        if(service.getDescription() != null) ;
-        try{mileage.setText(service.getMileage());}
+        try{mileage.setText(Integer.toString(service.getMileage()));}
         catch(Exception e){ Log.i("","no mileage to set");}
-        if(service.getPartNumber(0) != null) partNumberOne.setText(service.getPartNumber(0));
+        if(service.getPartNumber(0) != null) {
+            partNumberOne.setText(service.getPartNumber(0));}
         if(service.getPartNumber(1) != null) partNumberTwo.setText(service.getPartNumber(1));
         if(service.getPartNumber(2) != null) partNumberThree.setText(service.getPartNumber(2));
         if(service.getRepairImage(0) != null){
@@ -140,6 +149,7 @@ public class InProgressServiceFragment extends Fragment {
         if(service.getPartNumber(0) != null) partNumberOne.setText(service.getPartNumber(0));
         if(service.getPartNumber(1) != null) partNumberTwo.setText(service.getPartNumber(1));
         if(service.getPartNumber(2) != null) partNumberThree.setText(service.getPartNumber(2));
+        if(service.getNote() != null) note.setText(service.getName());
 //        save on click, sends the created service to the in progress list and shows in
 //        the in progress tab
         Button saveButton = (Button) v.findViewById(R.id.saveButton);
@@ -147,25 +157,52 @@ public class InProgressServiceFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Sets the name for each saved service
-                service.setStateComplete();
-                service.setName(titleName.getText().toString());
+                if(titleName != null) service.setName(titleName.getText().toString());
                 try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
                 catch(Exception e){
                     Log.e("","mileage not entered");
                 }
-                service.addPartNumber(partNumberOne.getText().toString());
-                service.addPartNumber(partNumberTwo.getText().toString());
-                service.addPartNumber(partNumberThree.getText().toString());
-                service.setDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
-                if(partNumberOne != null) service.addPartNumber(partNumberOne.getText().toString());
-                if(partNumberTwo != null) service.addPartNumber(partNumberTwo.getText().toString());
-                if(partNumberThree != null) service.addPartNumber(partNumberThree.getText().toString());
-                if(imageDescOne != null) service.addImageDesc(imageDescOne.getText().toString());
-                if(imageDescTwo != null) service.addImageDesc(imageDescTwo.getText().toString());
-                if(imageDescThree != null) service.addImageDesc(imageDescThree.getText().toString());
+                if(partNumberOne != null){
+                    if(service.getPartNumber(0) != null)
+                        service.replacePartNumber(0,partNumberOne.getText().toString());
+                    else service.addPartNumber(partNumberOne.getText().toString());
+                }
 
+                if(partNumberTwo != null){
+                    if(service.getPartNumber(1) != null)
+                        service.replacePartNumber(1,partNumberTwo.getText().toString());
+                    else service.addPartNumber(partNumberTwo.getText().toString());
+                }
+
+                if(partNumberThree != null){
+                    if(service.getPartNumber(2) != null)
+                        service.replacePartNumber(2,partNumberThree.getText().toString());
+                    else service.addPartNumber(partNumberThree.getText().toString());
+                }
+
+                if(imageDescOne != null){
+                    if(service.getImageDesc(0) != null)
+                        service.replaceImageDescription(0,imageDescOne.getText().toString());
+                    else service.addImageDesc(imageDescOne.getText().toString());
+                }
+
+                if(imageDescTwo != null){
+                    if(service.getImageDesc(1) != null)
+                        service.replaceImageDescription(1,imageDescTwo.getText().toString());
+                    else service.addImageDesc(imageDescTwo.getText().toString());
+                }
+
+                if(imageDescThree != null){
+                    if(service.getImageDesc(2) != null)
+                        service.replaceImageDescription(2,imageDescThree.getText().toString());
+                    else service.addImageDesc(imageDescThree.getText().toString());
+                }
+
+                if(note != null) service.setNote(note.getText().toString());
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
+
+                //mainS.inProgressList.set(pos,service);
                 main.saveServices(main.IN_PROGRESS_LIST_ID,main.inProgressList);
 
                 Fragment fragment = new InProgressTabFragment();
@@ -181,20 +218,48 @@ public class InProgressServiceFragment extends Fragment {
             public void onClick(View v){
                 //Sets the name of the service that has been completed
                 service.setStateComplete();
-                service.setName(titleName.getText().toString());
-
+                if(titleName != null) service.setName(titleName.getText().toString());
                 try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
                 catch(Exception e){
                     Log.e("","mileage not entered");
                 }
-                if(partNumberOne != null) service.addPartNumber(partNumberOne.getText().toString());
-                if(partNumberTwo != null) service.addPartNumber(partNumberTwo.getText().toString());
-                if(partNumberThree != null) service.addPartNumber(partNumberThree.getText().toString());
-                if(imageDescOne != null) service.addImageDesc(imageDescOne.getText().toString());
-                if(imageDescTwo != null) service.addImageDesc(imageDescTwo.getText().toString());
-                if(imageDescThree != null) service.addImageDesc(imageDescThree.getText().toString());
-                service.addPartNumber(partNumberThree.getText().toString());
-                service.setDate(new SimpleDateFormat("MM/dd/yyyy").format(new Date()));
+                if(partNumberOne != null){
+                    if(service.getPartNumber(0) != null)
+                        service.replacePartNumber(0,partNumberOne.getText().toString());
+                    else service.addPartNumber(partNumberOne.getText().toString());
+                }
+
+                if(partNumberTwo != null){
+                    if(service.getPartNumber(1) != null)
+                        service.replacePartNumber(1,partNumberTwo.getText().toString());
+                    else service.addPartNumber(partNumberTwo.getText().toString());
+                }
+
+                if(partNumberThree != null){
+                    if(service.getPartNumber(2) != null)
+                        service.replacePartNumber(2,partNumberThree.getText().toString());
+                    else service.addPartNumber(partNumberThree.getText().toString());
+                }
+
+                if(imageDescOne != null){
+                    if(service.getImageDesc(0) != null)
+                        service.replaceImageDescription(0,imageDescOne.getText().toString());
+                    else service.addImageDesc(imageDescOne.getText().toString());
+                }
+
+                if(imageDescTwo != null){
+                    if(service.getImageDesc(1) != null)
+                        service.replaceImageDescription(1,imageDescTwo.getText().toString());
+                    else service.addImageDesc(imageDescTwo.getText().toString());
+                }
+
+                if(imageDescThree != null){
+                    if(service.getImageDesc(2) != null)
+                        service.replaceImageDescription(2,imageDescThree.getText().toString());
+                    else service.addImageDesc(imageDescThree.getText().toString());
+                }
+
+                if(note != null) service.setNote(note.getText().toString());
 
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
@@ -203,19 +268,14 @@ public class InProgressServiceFragment extends Fragment {
                 main.saveServices(main.SERVICE_LIST_ID,main.serviceList);
                 main.saveServices(main.IN_PROGRESS_LIST_ID,main.inProgressList);
 
-                // check to see if service was previously saved as in progress and remove
-                // from that list
-
                 // redirect to History
                 Fragment fragment = new InProgressTabFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,
                         fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .commit();
-                //main.changeTabIndicator();
             }
         });
-//        titleName.setText(newName.getString("Name"));
         return (v);
     }
 

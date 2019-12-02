@@ -119,9 +119,9 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
         Services thisService = servicesList.get(position);
         try{ imageOneDesc.setText(thisService.getImageDesc(0));}
         catch(Exception e){Log.i("History Fragment Adapt","imageOneDesc dne");}
-        try{ imageTwoDesc.setText(thisService.getImageDesc(0));}
+        try{ imageTwoDesc.setText(thisService.getImageDesc(1));}
         catch(Exception e){Log.i("History Fragment Adapt","imageOneDesc dne");}
-        try{ imageThreeDesc.setText(thisService.getImageDesc(0));}
+        try{ imageThreeDesc.setText(thisService.getImageDesc(2));}
         catch(Exception e){Log.i("History Fragment Adapt","imageOneDesc dne");}
 
         String repairInfo = "\t\tPart Numbers:\n\t\t\t"+thisService.getPartNumber(0)+"\n\t\t\t"+thisService.getPartNumber(1)
@@ -144,6 +144,7 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
                     imageTwoDesc.setVisibility(View.VISIBLE);
                     imageThreeDesc.setVisibility(View.VISIBLE);
                     detailsButton.setText(R.string.LessDetails);
+                    detailsButton.setText("HIDE");
                 }
                 else {
                     repairImageOne.setVisibility(View.GONE);
@@ -154,6 +155,7 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
                     imageThreeDesc.setVisibility(View.GONE);
                     hiddenText.setVisibility(View.GONE);
                     detailsButton.setText(R.string.MoreDetails);
+                    detailsButton.setText("SHOW");
                 }
             }
         });
