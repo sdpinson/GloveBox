@@ -1,3 +1,13 @@
+/**
+ * @author Logan Goss & Shelton Pinson
+ * @email ltgoss@clemson.edu & spinson@clemson.edu
+ * @version 1.0
+ * @AppDescription GloveBox is an application designed for the DIY community to allow the average DIY'er
+ *  to track the services they perform on their personal car for their use in the future to determine
+ *  when to perform future services, provide proof to dealerships of self performed service or
+ *  proof to future owners of performed service.
+ * @ClassDescription adapter for the history recycler view
+ */
 package com.cpsc4150.glovebox.Adapters;
 
 import android.view.LayoutInflater;
@@ -19,6 +29,7 @@ import java.util.List;
 
 public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.InProgressViewHolder>{
 
+    // creates a new progressList
     private List<Services> progressList;
 
     public static class InProgressViewHolder extends RecyclerView.ViewHolder{
@@ -26,7 +37,9 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
         private TextView miles;
         private TextView date;
         private TextView description;
-
+        /**
+         * <p>creates a view holder given view v</p>
+         */
         public InProgressViewHolder(View v) {
             super(v);
             name = v.findViewById(R.id.historyID);
@@ -37,6 +50,11 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
     }
 
     //Updates the list with more services
+
+    /**
+     * <p> sets the progressList to list</p>
+     * @param list the list to set progress list to
+     */
     public InProgressAdapter(List<Services> list){
         this.progressList = list;
     }

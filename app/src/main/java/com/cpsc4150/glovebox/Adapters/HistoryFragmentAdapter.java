@@ -1,6 +1,15 @@
+/**
+ * @author Logan Goss & Shelton Pinson
+ * @email ltgoss@clemson.edu & spinson@clemson.edu
+ * @version 1.0
+ * @AppDescription GloveBox is an application designed for the DIY community to allow the average DIY'er
+ *  to track the services they perform on their personal car for their use in the future to determine
+ *  when to perform future services, provide proof to dealerships of self performed service or
+ *  proof to future owners of performed service.
+ * @ClassDescription adapter for the history recycler view
+ */
 package com.cpsc4150.glovebox.Adapters;
 
-import android.app.Service;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -22,6 +31,9 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
 
     private List<Services> servicesList;
 
+    /**
+     * <p>creates a new view holder for the recycler view</p>
+     */
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView name;
         private TextView miles;
@@ -37,12 +49,21 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
         }
     }
 
-    //Updates the list with more services
+    /**
+     * <p>updates the list with more the services from list</p>
+     * @param list the list to be loaded into servicesList
+     */
     public HistoryFragmentAdapter(List<Services> list){
         this.servicesList = list;
     }
 
-    //Calls the card view to display for each item in the list
+
+    /**
+     * <p>Calls the card view to display for each item in the list</p>
+     * @param parent the view group the card is to be created in
+     * @param viewType the view type to be used
+     * @return the created card view
+     */
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -50,6 +71,14 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
                 .inflate(R.layout.history_card, parent, false);
         return new MyViewHolder(view);
     }
+
+    /**
+     * <p>sets the image view's of the card view to the images that are stored for that service</p>
+     * @param imageView the imageview to set within the card view
+     * @param pos the position of the service in the service list
+     * @param pic the position of the picture in the services repair pictures list
+     * @return
+     */
     private boolean setImageView(ImageView imageView,int pos, int pic){
         try{
             String imageFilePath = servicesList.get(pos).getRepairImage(pic);
@@ -65,6 +94,12 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     }
 
     //Will iterate through the list of all services to display them
+
+    /**
+     * <p>will iterate through the list off all services to display them in card views</p>
+     * @param holder the view holder to display the card view in
+     * @param position the position at which the view is to be display
+     */
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.name.setText(servicesList.get(position).getName());
@@ -96,6 +131,10 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
         hiddenText.setText(repairInfo);
 
         detailsButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * <p>determines how the button behaves when clicked. Changes the visibility of the items</p>
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 if(hiddenText.getVisibility() == View.GONE){
@@ -123,6 +162,11 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
     }
 
     //Returns the number of services in the list
+
+    /**
+     * <p>returns the number of items in the list</p>
+     * @return the number of items in the list as returned by list.size()
+     */
     @Override
     public int getItemCount() {
         return servicesList.size();

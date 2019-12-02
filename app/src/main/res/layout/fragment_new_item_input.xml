@@ -135,7 +135,6 @@
         android:layout_height="40dp"
         android:layout_marginStart="180dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/partNumberThree"
         app:srcCompat="@color/appBarText" />
