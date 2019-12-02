@@ -1,3 +1,13 @@
+/**
+ * @author Logan Goss & Shelton Pinson
+ * @email ltgoss@clemson.edu & spinson@clemson.edu
+ * @version 1.0
+ * @AppDescription GloveBox is an application designed for the DIY community to allow the average DIY'er
+ *  to track the services they perform on their personal car for their use in the future to determine
+ *  when to perform future services, provide proof to dealerships of self performed service or
+ *  proof to future owners of performed service.
+ * @Description sets up the fragment for the in progress tab
+ */
 package com.cpsc4150.glovebox.Fragments;
 
 import android.os.Bundle;

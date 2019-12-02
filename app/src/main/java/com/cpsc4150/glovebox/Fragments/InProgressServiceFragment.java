@@ -1,3 +1,14 @@
+/**
+ * @author Logan Goss & Shelton Pinson
+ * @email ltgoss@clemson.edu & spinson@clemson.edu
+ * @version 1.0
+ * @AppDescription GloveBox is an application designed for the DIY community to allow the average DIY'er
+ *  to track the services they perform on their personal car for their use in the future to determine
+ *  when to perform future services, provide proof to dealerships of self performed service or
+ *  proof to future owners of performed service.
+ * @ClassDescription sets up the in edit page for a service that is in progress
+ * @see https://developer.android.com/training/camera/photobasics.html#java
+ */
 package com.cpsc4150.glovebox.Fragments;
 
 import android.content.Intent;
@@ -42,9 +53,7 @@ public class InProgressServiceFragment extends Fragment {
     private String currentPhotoPath;
     private int view = 0;
     private int pos;
-
-//    https://developer.android.com/training/camera/photobasics.html#java
-
+    // sets the servicePosition so that ther correct service in the service list may be used
     public InProgressServiceFragment(int servicePosition) {pos = servicePosition;}
     @Nullable
     @Override
@@ -210,7 +219,9 @@ public class InProgressServiceFragment extends Fragment {
         return (v);
     }
 
-
+    /**
+     * <p>accesses the camera intent for capturing repair pictures</p>
+     */
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
@@ -231,6 +242,12 @@ public class InProgressServiceFragment extends Fragment {
         }
     }
 
+    /**
+     * <p>defines the actions to be done after the camera intent is finished</p>
+     * @param requestCode whether or not a picture was requested
+     * @param resultCode whether or not the picture was obtained
+     * @param data the data returned by the intent
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
@@ -270,6 +287,11 @@ public class InProgressServiceFragment extends Fragment {
         }
     }
 
+    /**
+     * <p>creates a file path for the image</p>
+     * @return returns the file path
+     * @throws IOException throws an exception if an image is unable to be created
+     */
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -285,6 +307,10 @@ public class InProgressServiceFragment extends Fragment {
         return image;
     }
 
+    /**
+     * <p>creates a image bitmap and sets it in an image view for the picture just taken</p>
+     * @param imageView the image view to set the new bitmap to
+     */
     private void setPic(ImageView imageView) {
         // Get the dimensions of the View
         int targetW = imageView.getWidth();

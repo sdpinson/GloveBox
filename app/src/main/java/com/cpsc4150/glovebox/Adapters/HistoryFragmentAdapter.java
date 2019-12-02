@@ -77,7 +77,7 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
      * @param imageView the imageview to set within the card view
      * @param pos the position of the service in the service list
      * @param pic the position of the picture in the services repair pictures list
-     * @return
+     * @return true if the image existed or false if not
      */
     private boolean setImageView(ImageView imageView,int pos, int pic){
         if(servicesList.get(pos).getRepairImage(pic) != null){
@@ -158,8 +158,6 @@ public class HistoryFragmentAdapter extends RecyclerView.Adapter<HistoryFragment
             }
         });
     }
-
-    //Returns the number of services in the list
 
     /**
      * <p>returns the number of items in the list</p>

@@ -1,3 +1,13 @@
+/**
+ * @author Logan Goss & Shelton Pinson
+ * @email ltgoss@clemson.edu & spinson@clemson.edu
+ * @version 1.0
+ * @AppDescription GloveBox is an application designed for the DIY community to allow the average DIY'er
+ *  to track the services they perform on their personal car for their use in the future to determine
+ *  when to perform future services, provide proof to dealerships of self performed service or
+ *  proof to future owners of performed service.
+ * @Description loads the history tab fragment
+ */
 package com.cpsc4150.glovebox.Fragments;
 
 import android.os.Bundle;
@@ -20,7 +30,6 @@ import com.cpsc4150.glovebox.Services;
 import java.util.List;
 
 public class HistoryTabFragment extends Fragment{
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,10 +46,5 @@ public class HistoryTabFragment extends Fragment{
         historyRV.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
 
         return fragmentView;
-    }
-
-    public List<Services> getServiceList(){
-        MainActivity main = (MainActivity) this.getActivity();
-    return(main.serviceList);
     }
 }

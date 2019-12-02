@@ -6,7 +6,7 @@
  *  to track the services they perform on their personal car for their use in the future to determine
  *  when to perform future services, provide proof to dealerships of self performed service or
  *  proof to future owners of performed service.
- * @ClassDescription adapter for the history recycler view
+ * @ClassDescription adapter for the in progress recycler view
  */
 package com.cpsc4150.glovebox.Adapters;
 
@@ -59,7 +59,12 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
         this.progressList = list;
     }
 
-    //Calls the card view to display for each item in the list
+    /**
+     * <p>Calls the card view to display for each item in the list</p>
+     * @param parent the view group the card is to be created in
+     * @param viewType the view type to be used
+     * @return the created card view
+     */
     @NonNull
     @Override
     public InProgressAdapter.InProgressViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -67,13 +72,17 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
                 .inflate(R.layout.inprogress_card, parent, false);
         return new InProgressAdapter.InProgressViewHolder(view);
     }
-    //Will iterate through the list of all services to display them
+
+    /**
+     * <p>will iterate through the list off all services to display them in card views</p>
+     * @param holder the view holder to display the card view in
+     * @param position the position at which the view is to be display
+     */
     @Override
     public void onBindViewHolder(InProgressAdapter.InProgressViewHolder holder, final int position) {
         holder.name.setText(progressList.get(position).getName());
         holder.miles.setText(Integer.toString(progressList.get(position).getMileage()));
         holder.date.setText(progressList.get(position).getDate());
-        Services thisService = progressList.get(position);
         //Sets the button for each card view and allows the text to be displayed on button press
         final Button editButton = holder.itemView.findViewById(R.id.detailsButton);
         editButton.setOnClickListener(new View.OnClickListener(){
@@ -87,7 +96,10 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
         });
     }
 
-    //Returns the number of services in the list
+    /**
+     * <p>returns the number of items in the list</p>
+     * @return the number of items in the list as returned by list.size()
+     */
     @Override
     public int getItemCount() {
         return progressList.size();
