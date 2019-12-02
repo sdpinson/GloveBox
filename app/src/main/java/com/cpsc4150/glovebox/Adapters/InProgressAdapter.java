@@ -29,7 +29,7 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
 
         public InProgressViewHolder(View v) {
             super(v);
-            name = v.findViewById(R.id.historyID);
+            name = v.findViewById(R.id.inProgressID);
             miles = (TextView) v.findViewById(R.id.miles);
             date = (TextView) v.findViewById(R.id.date);
             description = (TextView) v.findViewById(R.id.serviceDescription);
@@ -52,6 +52,7 @@ public class InProgressAdapter extends RecyclerView.Adapter<InProgressAdapter.In
     //Will iterate through the list of all services to display them
     @Override
     public void onBindViewHolder(InProgressAdapter.InProgressViewHolder holder, final int position) {
+        holder.name.setText(progressList.get(position).getName());
         holder.miles.setText(Integer.toString(progressList.get(position).getMileage()));
         holder.date.setText(progressList.get(position).getDate());
         Services thisService = progressList.get(position);

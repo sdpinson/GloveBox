@@ -52,8 +52,7 @@ public class NewItemInputFragment extends Fragment {
                 false);
         Bundle newName = this.getArguments();
         final TextView titleName = v.findViewById(R.id.titleText);
-
-
+        titleName.setText(newName.getString("Name"));
         final ImageButton pictureButtonOne = (ImageButton) v.findViewById(R.id.addImageButtonOne);
 
         pictureButtonOne.setOnClickListener(new View.OnClickListener() {
@@ -166,7 +165,6 @@ public class NewItemInputFragment extends Fragment {
                 //main.changeTabIndicator();
             }
         });
-        titleName.setText(newName.getString("Name"));
         return (v);
     }
 

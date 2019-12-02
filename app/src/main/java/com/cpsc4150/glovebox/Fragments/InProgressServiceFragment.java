@@ -61,10 +61,11 @@ public class InProgressServiceFragment extends Fragment {
         ImageView viewOne = (ImageView) v.findViewById(R.id.smallImageView);
         ImageView viewTwo = (ImageView) v.findViewById(R.id.imageView2);
         ImageView viewThree = (ImageView) v.findViewById(R.id.imageView3);
-        Bundle newName = this.getArguments();
         final MainActivity main = (MainActivity) this.getActivity();
+        //Sets the name of the service
         service = main.inProgressList.get(pos);
         final TextView titleName = v.findViewById(R.id.titleText);
+        titleName.setText(service.getName());
 
         final ImageButton pictureButtonOne = (ImageButton) v.findViewById(R.id.addImageButtonOne);
         pictureButtonOne.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +173,6 @@ public class InProgressServiceFragment extends Fragment {
                 //Sets the name of the service that has been completed
                 service.setStateComplete();
                 service.setName(titleName.getText().toString());
-                main.inProgressList.remove(pos);
 
                 try{service.setMileage((Integer.parseInt(mileage.getText().toString())));}
                 catch(Exception e){
@@ -190,7 +190,9 @@ public class InProgressServiceFragment extends Fragment {
                 // save service into shared prefs
                 MainActivity main = (MainActivity) getActivity();
                 main.serviceList.add(service);
+                main.inProgressList.remove(pos);
                 main.saveServices(main.SERVICE_LIST_ID,main.serviceList);
+                main.saveServices(main.IN_PROGRESS_LIST_ID,main.inProgressList);
 
                 // check to see if service was previously saved as in progress and remove
                 // from that list
