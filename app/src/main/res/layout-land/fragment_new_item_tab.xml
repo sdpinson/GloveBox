@@ -81,5 +81,5 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:layout_toEndOf="@id/ignitionButton"
-        app:srcCompat="@android:drawable/ic_menu_camera" />
+        app:srcCompat="@drawable/flashlight_off" />
 </RelativeLayout>
